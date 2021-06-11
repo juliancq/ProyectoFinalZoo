@@ -28,17 +28,7 @@ public class Veterinario extends Empleado
 		return 0;
 	}
 
-	@Override
-	public boolean darDeAlta() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public boolean darDeBaja() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public String toString() {

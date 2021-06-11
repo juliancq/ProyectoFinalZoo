@@ -93,6 +93,10 @@ public abstract class Empleado
 		return cuil;
 	}
 
+	public boolean getAlta() {
+		return alta;
+	}
+	
 	public void setSueldo(double sueldo) {
 		this.sueldo = sueldo;
 	}
@@ -109,6 +113,14 @@ public abstract class Empleado
 		this.horario = horario;
 	}
 	
+	public void darAlta() {
+		alta = true;
+	}
+	
+	public void darBaja() {
+		alta = false;
+	}
+	
 	@Override
 	public String toString() {
 		return "Empleado [getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getDni()=" + getDni()
@@ -118,12 +130,6 @@ public abstract class Empleado
 	}
 	
 	public abstract double calcularSueldo();
-	
-	public abstract boolean darDeAlta();
-	
-	public abstract boolean darDeBaja();
-	
-	
 	
 	
 }

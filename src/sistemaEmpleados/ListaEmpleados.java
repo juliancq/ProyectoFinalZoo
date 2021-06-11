@@ -37,5 +37,25 @@ public class ListaEmpleados
 		return lista.size();
 	}
 	
+	public void darDeAlta(int legajo)
+	{
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getLegajo() == legajo)
+			{
+				lista.get(i).darAlta();
+			}
+		}
+	}
 	
+	public void darDeBaja(int legajo)
+	{
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getLegajo() == legajo)
+			{
+				lista.get(i).darBaja();
+			}
+		}
+	}
 }
