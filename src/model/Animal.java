@@ -42,6 +42,8 @@ public class Animal {
 		this.estadoSalud = estadoSalud;
 		this.sexo = sexo;
 		this.fechaDeNacimiento = fechaDeNacimiento;
+		this.alimentacionDiaria = alimentacionDiaria;
+		this.tipoAlimentacion = tipoAlimentacion;
 	}
 
 	public String getNombre() {

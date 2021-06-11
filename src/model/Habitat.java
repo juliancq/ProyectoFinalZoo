@@ -8,6 +8,13 @@ public class Habitat {
 	private String tipo;
 	private ArrayList<Sector> animales;
 	
+	public Habitat() 
+	{
+		temperatura = 0;
+		tipo = "No especificado";
+		animales = new ArrayList<>();
+	}
+	
 	public Habitat(double temperatura, String tipo)
 	{
 		this.temperatura = temperatura;
@@ -15,12 +22,6 @@ public class Habitat {
 		animales = new ArrayList<>();
 	}
 	
-	public Habitat() 
-	{
-		temperatura = 0;
-		tipo = "No especificado";
-		animales = new ArrayList<>();
-	}
 	
 	public double getTemperatura() {
 		return temperatura;
