@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Habitat {
 	
-	private float temperatura;
+	private double temperatura;
 	private String tipo;
-	private ArrayList<String> animales;
+	private ArrayList<Sector> animales;
 	
-	public Habitat(float temperatura, String tipo)
+	public Habitat(double temperatura, String tipo)
 	{
 		this.temperatura = temperatura;
 		this.tipo = tipo;
@@ -22,7 +22,7 @@ public class Habitat {
 		animales = new ArrayList<>();
 	}
 	
-	public float getTemperatura() {
+	public double getTemperatura() {
 		return temperatura;
 	}
 	
