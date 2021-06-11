@@ -33,7 +33,7 @@ public class Animal {
 	}
 
 	public Animal(String nombre, double peso, String raza, String especie, String estadoSalud, String sexo,
-			Date fechaDeNacimiento) {
+				String tipoAlimentacion, double alimentacionDiaria, Date fechaDeNacimiento) {
 		super();
 		this.nombre = nombre;
 		this.peso = peso;
@@ -89,6 +89,15 @@ public class Animal {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public void setAlimentacionDiaria(double alimentacionDiaria) {
+		this.alimentacionDiaria = alimentacionDiaria;
+	}
+	
+	
 	
 	public String toString() {
 		return "Animal [getNombre()=" + getNombre() + ", getPeso()=" + getPeso() + ", getRaza()=" + getRaza()
