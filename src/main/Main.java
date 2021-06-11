@@ -10,7 +10,7 @@ public class Main {
 		//Hola
 		System.out.println("DALE COLILOOOOO");
 		
-		Habitat aux = new Habitat(7.6,"Sabana");
+		
 		
 	}
 
