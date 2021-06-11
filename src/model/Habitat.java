@@ -8,8 +8,18 @@ public class Habitat {
 	private String tipo;
 	private ArrayList<String> animales;
 	
-	public Habitat() {
-		// TODO Auto-generated constructor stub
+	public Habitat(float temperatura, String tipo)
+	{
+		this.temperatura = temperatura;
+		this.tipo = tipo;
+		animales = new ArrayList<>();
+	}
+	
+	public Habitat() 
+	{
+		temperatura = 0;
+		tipo = "No especificado";
+		animales = new ArrayList<>();
 	}
 	
 	public float getTemperatura() {

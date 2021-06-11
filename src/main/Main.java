@@ -1,5 +1,7 @@
 package main;
 
+import model.Habitat;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -7,6 +9,9 @@ public class Main {
 		
 		//Hola
 		System.out.println("DALE COLILOOOOO");
+		
+		Habitat aux = new Habitat(7.6,"Sabana");
+		
 	}
 
 }
