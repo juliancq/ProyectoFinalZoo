@@ -1,4 +1,4 @@
-package SistemaEmpleados;
+package sistemaEmpleados;
 
 import java.util.ArrayList;
 

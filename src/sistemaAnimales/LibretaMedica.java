@@ -1,4 +1,4 @@
-package model;
+package sistemaAnimales;
 
 import java.util.ArrayList;
 import java.util.Calendar;

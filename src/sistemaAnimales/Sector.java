@@ -1,4 +1,4 @@
-package model;
+package sistemaAnimales;
 
 import java.util.Date;
 import java.util.HashSet;

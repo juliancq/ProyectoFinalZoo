@@ -1,4 +1,4 @@
-package SistemaEmpleados;
+package sistemaEmpleados;
 
 public class Limpieza extends Empleado
 {

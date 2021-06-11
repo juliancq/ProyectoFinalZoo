@@ -1,17 +1,16 @@
-package SistemaEmpleados;
+package sistemaEmpleados;
 
 import java.sql.Date;
 
-public class Cuidador extends Empleado
+public class Seguridad extends Empleado
 {
-	private int sector; //asignarle un sector de animales
+	private int sector;
 	
-	
-	public Cuidador() {
+	public Seguridad() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Cuidador(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
+	public Seguridad(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
 			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
 			int sector) {
 		super(nombre, apellido, dni, edad, sueldo, mail, fechaDeContratacion, telefono, direccion, legajo, horario,
@@ -26,6 +25,7 @@ public class Cuidador extends Empleado
 	public void setSector(int sector) {
 		this.sector = sector;
 	}
+	
 	
 	@Override
 	public double calcularSueldo() {
@@ -47,6 +47,6 @@ public class Cuidador extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Cuidador [getSector()=" + getSector() + "]";
+		return super.toString() + "Seguridad [getSector()=" + getSector() + "]";
 	}
 }

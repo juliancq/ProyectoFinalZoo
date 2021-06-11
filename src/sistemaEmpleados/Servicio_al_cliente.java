@@ -1,28 +1,30 @@
-package SistemaEmpleados;
+package sistemaEmpleados;
 
 import java.sql.Date;
 
-public class Adiestrador extends Empleado 
+public class Servicio_al_cliente extends Empleado
 {
-	private String especilidad; //especialista en que animales
+	private String area;//atencion telefonica,candy shop, cafe, etc...
 	
-	
-	public Adiestrador() {
+	public Servicio_al_cliente() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Adiestrador(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
+		
+	public Servicio_al_cliente(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
 			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
-			String especilidad) {
+			String area) {
 		super(nombre, apellido, dni, edad, sueldo, mail, fechaDeContratacion, telefono, direccion, legajo, horario,
 				genero, cuil);
-		this.especilidad = especilidad;
+		this.area = area;
 	}
 
-	public String getEspecilidad() {
-		return especilidad;
+	public String getArea() {
+		return area;
 	}
-
+	
+	public void setArea(String area) {
+		this.area = area;
+	}
 
 	@Override
 	public double calcularSueldo() {
@@ -44,10 +46,6 @@ public class Adiestrador extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Adiestrador [getEspecilidad()=" + getEspecilidad() + "]";
+		return super.toString() + "Servicio_al_cliente [getArea()=" + getArea() + "]";
 	}
-
-	
-
-	
 }
