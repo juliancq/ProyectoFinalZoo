@@ -1,6 +1,6 @@
 package SistemaEmpleados;
 
-import java.sql.Date;
+import java.util.Date;
 
 public abstract class Empleado 
 {

@@ -8,6 +8,14 @@ public class Limpieza extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
+	public String getAreaDeTrabajo() {
+		return areaDeTrabajo;
+	}
+	
+	public void setAreaDeTrabajo(String areaDeTrabajo) {
+
+		this.areaDeTrabajo = areaDeTrabajo;
+	}
 	
 	@Override
 	public double calcularSueldo() {
@@ -26,5 +34,12 @@ public class Limpieza extends Empleado
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Limpieza [getAreaDeTrabajo()=" + getAreaDeTrabajo() + "]";
+	}
+	
+	
 
 }

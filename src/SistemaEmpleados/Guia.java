@@ -60,11 +60,11 @@ public class Guia extends Empleado
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	public String toString() {
-		
-		return super.toString();
+		return super.toString() + "Guia [getAreaDeTrabajo()=" + getAreaDeTrabajo() + "]";
 	}
+	
 	
 }

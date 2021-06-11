@@ -1,8 +1,6 @@
-package model;
+package SistemaEmpleados;
 
 import java.sql.Date;
-
-import SistemaEmpleados.Empleado;
 
 public class Veterinario extends Empleado
 {
@@ -20,6 +18,10 @@ public class Veterinario extends Empleado
 		this.matricula = matricula;
 	}
 
+	public int getMatricula() {
+		return matricula;
+	}
+	
 	@Override
 	public double calcularSueldo() {
 		// TODO Auto-generated method stub
@@ -37,10 +39,11 @@ public class Veterinario extends Empleado
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return super.toString() + "Veterinario [getMatricula()=" + getMatricula() + "]";
 	}
+	
+	
 }
