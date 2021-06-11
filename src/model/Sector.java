@@ -10,39 +10,55 @@ public class Sector<T> {
 	private double stockAlimento = 0;
 	private Date ultimaFechaMantenimiento = null;
 	private String nombreSector;
+	private int idSector;
+	private int contadorID = 0;
 	
 	/* Constructores */
 	public Sector() {
-		// TODO Auto-generated constructor stub
+		
 		this.nombreSector = "No especificado";
+		this.animales = new HashSet<>();
 	}
 	
-	public Sector(String nombreSector) {
+	public Sector(String nombreSector, int idSector) {
 		
 		this.nombreSector = nombreSector;
+		this.idSector = idSector;
+		this.animales = new HashSet<>();
 	}
 	
 	/* Getters & Setters */	
 	public String getNombreSector() {
+		
 		return nombreSector;
 	}
 	
 	public double getStockAlimento() {
+		
 		return stockAlimento;
 	}
 	
 	public Date getUltimaFechaMantenimiento() {
+		
 		return ultimaFechaMantenimiento;
 	}
 	
+	public int getContadorID() {
+		
+		return contadorID;
+	}
+	
 	public void setStockAlimento(double stockAlimento) {
+		
 		this.stockAlimento = stockAlimento;
 	}
 	
 	public void setUltimaFechaMantenimiento(Date ultimaFechaMantenimiento) {
+		
 		this.ultimaFechaMantenimiento = ultimaFechaMantenimiento;
 	}
 	public void setNombreSector(String nombreSector) {
+		
 		this.nombreSector = nombreSector;
 	}
 	
@@ -50,6 +66,19 @@ public class Sector<T> {
 		
 		return animales.size();
 	}
+	
+	
+	public void agregarAnimal(T nuevo) {
+		
+		if(nuevo instanceof Animal) {
+			
+			((Animal)nuevo).setID(getContadorID());
+			
+		}
+		animales.add(nuevo);
+	}
+	
+	
 	
 	/*
 	 * Esta funcion calcula la cantidad de alimento necesario para el sector, conociendo la cantidad de alimento que consume un animal al dia
@@ -63,13 +92,14 @@ public class Sector<T> {
 		{
 			double consumo = 0;
 			Iterator it = animales.iterator();
-	        int contador = 0;
+	        double contador = 0;
 
 	        while(it.hasNext())
 	        {
-	            //contador = contador + ((Animal)it.next()).getAlimentacionDiaria();
+	            contador = contador + ((Animal)it.next()).getAlimentacionDiaria();
 	        }
 			
+	        System.out.println(contador);
 			if(consumo > getStockAlimento()) {
 				throw new Exception("El stock de alimentos es insuficiente, porfavor reponga");
 			}
@@ -81,6 +111,17 @@ public class Sector<T> {
 		{
 			e.getMessage();
 		}
+	}
+	
+	/*
+	 * Esta funcion se encarga de reponer el stock de alimentos sumando el stock inicial + el ingreso
+	 * 
+	 * @param double ingresoStock
+	 * @return void
+	 */
+	public void reponerStock(double ingresoStock) {
+		
+		setStockAlimento(getStockAlimento() + ingresoStock); 
 	}
 	
 	@Override
