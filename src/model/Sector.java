@@ -48,6 +48,10 @@ public class Sector<T> {
 		return contadorID;
 	}
 	
+	public int getIdSector() {
+		return idSector;
+	}
+	
 	public void setStockAlimento(double stockAlimento) {
 		
 		this.stockAlimento = stockAlimento;
@@ -92,14 +96,14 @@ public class Sector<T> {
 		{
 			double consumo = 0;
 			Iterator it = animales.iterator();
-	        double contador = 0;
+	        
 
 	        while(it.hasNext())
 	        {
-	            contador = contador + ((Animal)it.next()).getAlimentacionDiaria();
+	            consumo = consumo + ((Animal)it.next()).getAlimentacionDiaria();
 	        }
 			
-	        System.out.println(contador);
+	        
 			if(consumo > getStockAlimento()) {
 				throw new Exception("El stock de alimentos es insuficiente, porfavor reponga");
 			}
@@ -109,7 +113,7 @@ public class Sector<T> {
 		}
 		catch(Exception e)
 		{
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 	}
 	
