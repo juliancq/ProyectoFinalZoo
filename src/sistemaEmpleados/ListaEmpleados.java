@@ -58,4 +58,48 @@ public class ListaEmpleados
 			}
 		}
 	}
+	
+	public void modificarHorario(int legajo, String horario)
+	{
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getLegajo() == legajo)
+			{
+				lista.get(i).setHorario(horario);
+			}
+		}
+	}
+	
+	public void modificarSueldo(int legajo, double sueldo)
+	{
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getLegajo() == legajo)
+			{
+				lista.get(i).setSueldo(sueldo);
+			}
+		}
+	}
+	
+	public void modificarDireccion(int legajo, String direccion)
+	{
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getLegajo() == legajo)
+			{
+				lista.get(i).setDireccion(direccion);
+			}
+		}
+	}
+	
+	public void modificarTelefono(int legajo, int telefono)
+	{
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getLegajo() == legajo)
+			{
+				lista.get(i).setTelefono(telefono);
+			}
+		}
+	}
 }
