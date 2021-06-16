@@ -1,6 +1,8 @@
 package sistemaEmpleados;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public abstract class Empleado 
 {
@@ -23,7 +25,7 @@ public abstract class Empleado
 		// TODO Auto-generated constructor stub
 	}
 
-	public Empleado(String nombre, String apellido, int dni, int edad, double sueldo, String mail, Date fechaDeContratacion,
+	public Empleado(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
 			int telefono, String direccion, int legajo, String horario, char genero, int cuil) {
 		super();
 		this.nombre = nombre;
@@ -32,7 +34,7 @@ public abstract class Empleado
 		this.edad = edad;
 		this.sueldo = sueldo;
 		this.mail = mail;
-		this.fechaDeContratacion = fechaDeContratacion;
+		this.fechaDeContratacion = generarFechaActual();
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.legajo = legajo;
@@ -41,6 +43,15 @@ public abstract class Empleado
 		this.cuil = cuil;
 	}
 
+	public Date generarFechaActual()
+    {
+        Calendar calendario = new GregorianCalendar();
+        Date fecha = new Date();
+        calendario.setTime(fecha);
+
+        return fecha;
+    }
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -129,6 +140,23 @@ public abstract class Empleado
 				+ ", getDireccion()=" + getDireccion() + ", getLegajo()=" + getLegajo() + ", getArea()=" + ", getHorario()=" + getHorario() + ", getGenero()=" + getGenero() + ", getCuil()=" + getCuil() + "]";
 	}
 	
+	/*public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nNif: ");
+        sb.append(nif);
+        sb.append("\nSueldo Base: ");
+        sb.append(sueldoBase);
+        sb.append("\nHoras Extras: ");
+        sb.append(horasExtras);
+        sb.append("\ntipo IRPF: ");
+        sb.append(tipoIRPF);
+        sb.append("\nCasado: ");
+        sb.append(casado);
+        sb.append("\nNúmero de Hijos: ");
+        sb.append(numeroHijos);
+        return  sb.toString();
+    }
+	*/
 	public abstract double calcularSueldo();
 	
 	
