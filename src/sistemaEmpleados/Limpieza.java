@@ -1,5 +1,7 @@
 package sistemaEmpleados;
 
+import java.util.Date;
+
 public class Limpieza extends Empleado
 {
 	private String areaDeTrabajo;

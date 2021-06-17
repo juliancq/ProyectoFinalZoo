@@ -1,6 +1,6 @@
 package sistemaEmpleados;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Adiestrador extends Empleado 
 {
