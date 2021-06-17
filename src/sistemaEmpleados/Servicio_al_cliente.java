@@ -36,6 +36,6 @@ public class Servicio_al_cliente extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Servicio_al_cliente [getArea()=" + getArea() + "]";
+		return super.toString() + "\nClase: Servicio al cliente\nArea: " + getArea() + "\n-------------------------";
 	}
 }

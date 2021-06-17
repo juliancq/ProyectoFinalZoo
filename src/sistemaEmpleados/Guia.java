@@ -53,7 +53,7 @@ public class Guia extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Guia [getAreaDeTrabajo()=" + getAreaDeTrabajo() + "]";
+		return super.toString() + "\nClase: Guia\nAreaDeTrabajo: " + getAreaDeTrabajo() + "\n-------------------------";
 	}
 	
 	

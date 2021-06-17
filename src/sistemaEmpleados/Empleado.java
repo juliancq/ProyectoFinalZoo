@@ -134,7 +134,7 @@ public abstract class Empleado
 	
 	@Override
 	public String toString() {
-		return "Empleado:" + "\nClase: " + getClass() + "\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
+		return "Empleado:" + "\n-------------------------\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
 				+ "\nEdad: " + getEdad() + "\nSueldo: $" + getSueldo() + "\nMail: " + getMail()
 				+ "\nFecha de contratacion: " + getFechaDeContratacion() + "\nTelefono: " + getTelefono()
 				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nCuil: " + getCuil();

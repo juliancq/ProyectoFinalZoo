@@ -32,7 +32,7 @@ public class Veterinario extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Veterinario [getMatricula()=" + getMatricula() + "]";
+		return super.toString() + "\nClase: Veterinario\nMatricula: " + getMatricula() + "\n-------------------------";
 	}
 	
 	

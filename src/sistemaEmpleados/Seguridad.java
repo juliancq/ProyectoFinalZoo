@@ -37,6 +37,6 @@ public class Seguridad extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Seguridad [getSector()=" + getSector() + "]";
+		return super.toString() + "\nClase: Seguridad\nSector: " + getSector() + "\n-------------------------";
 	}
 }

@@ -32,7 +32,7 @@ public class Adiestrador extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nClase: Adiestrador\nEspecilidad: " + getEspecilidad();
+		return super.toString() + "\nClase: Adiestrador\nEspecilidad: " + getEspecilidad() + "\n-------------------------";
 	}
 
 	

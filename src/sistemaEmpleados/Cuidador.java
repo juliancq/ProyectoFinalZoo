@@ -37,6 +37,6 @@ public class Cuidador extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Cuidador [getSector()=" + getSector() + "]";
+		return super.toString() + "\nClase: Cuidador\nSector: " + getSector() + "\n-------------------------";
 	}
 }

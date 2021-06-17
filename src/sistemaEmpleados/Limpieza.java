@@ -27,7 +27,7 @@ public class Limpieza extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Limpieza [getAreaDeTrabajo()=" + getAreaDeTrabajo() + "]";
+		return super.toString() + "\nClase: Limpieza\nreaDeTrabajo: " + getAreaDeTrabajo() + "\n-------------------------";
 	}
 	
 	
