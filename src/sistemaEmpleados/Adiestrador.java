@@ -11,10 +11,9 @@ public class Adiestrador extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Adiestrador(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
-			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
+	public Adiestrador(String nombre, String apellido, int dni, int edad, double sueldo, String mail, long telefono, String direccion, int legajo, String horario, char genero, long cuil,
 			String especilidad) {
-		super(nombre, apellido, dni, edad, sueldo, mail, fechaDeContratacion, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.especilidad = especilidad;
 	}
@@ -33,7 +32,7 @@ public class Adiestrador extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "Adiestrador [getEspecilidad()=" + getEspecilidad() + "]";
+		return super.toString() + "\nClase: Adiestrador\nEspecilidad: " + getEspecilidad();
 	}
 
 	

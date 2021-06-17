@@ -13,7 +13,7 @@ public class Seguridad extends Empleado
 	public Seguridad(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
 			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
 			int sector) {
-		super(nombre, apellido, dni, edad, sueldo, mail, fechaDeContratacion, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.sector = sector;
 	}

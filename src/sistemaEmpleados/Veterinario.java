@@ -13,7 +13,7 @@ public class Veterinario extends Empleado
 	public Veterinario(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
 			Date fechaDeContratacion, int telefono, String direccion, int legajo, String area, String horario,
 			char genero, int cuil, int matricula) {
-		super(nombre, apellido, dni, edad, sueldo, mail, fechaDeContratacion, telefono, direccion, legajo,
+		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo,
 				horario, genero, cuil);
 		this.matricula = matricula;
 	}

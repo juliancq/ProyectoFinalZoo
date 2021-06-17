@@ -42,6 +42,7 @@ public class ListaEmpleados
 		}
 		return builder.toString();
 	}
+
 	/**
 	 * Cuenta la cantidad de empleados de la lista
 	 * @return
@@ -50,6 +51,7 @@ public class ListaEmpleados
 	{
 		return lista.size();
 	}
+
 	/**
 	 * Da de alta a un empleado segun el nro de legajo
 	 * @param legajo
@@ -138,6 +140,7 @@ public class ListaEmpleados
 			}
 		}
 	}
+
 	/**
 	 * Elimina un empleado segun nro de legajo
 	 * @param legajo
@@ -152,6 +155,7 @@ public class ListaEmpleados
 			}
 		}
 	}
+
 	/**
 	 * Busca un empleado segun el nro de legajo
 	 * @param legajo
@@ -168,6 +172,5 @@ public class ListaEmpleados
 		}
 		return null;
 	}
-	
-	
+
 }

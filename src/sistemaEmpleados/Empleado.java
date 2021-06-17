@@ -13,12 +13,12 @@ public abstract class Empleado
 	private double sueldo;
 	private String mail;
 	private Date fechaDeContratacion;
-	private int telefono;
+	private long telefono;
 	private String direccion;
 	private int legajo;
 	private String horario;
 	private char genero;
-	private int cuil;
+	private long cuil;
 	private boolean alta = false;
 	
 	public Empleado() {
@@ -26,7 +26,7 @@ public abstract class Empleado
 	}
 
 	public Empleado(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
-			int telefono, String direccion, int legajo, String horario, char genero, int cuil) {
+			long telefono, String direccion, int legajo, String horario, char genero, long cuil) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -80,7 +80,7 @@ public abstract class Empleado
 		return fechaDeContratacion;
 	}
 
-	public int getTelefono() {
+	public long getTelefono() {
 		return telefono;
 	}
 
@@ -100,7 +100,7 @@ public abstract class Empleado
 		return genero;
 	}
 
-	public int getCuil() {
+	public long getCuil() {
 		return cuil;
 	}
 
@@ -134,10 +134,10 @@ public abstract class Empleado
 	
 	@Override
 	public String toString() {
-		return "Empleado [getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getDni()=" + getDni()
-				+ ", getEdad()=" + getEdad() + ", getSueldo()=" + getSueldo() + ", getMail()=" + getMail()
-				+ ", getFechaDeContratacion()=" + getFechaDeContratacion() + ", getTelefono()=" + getTelefono()
-				+ ", getDireccion()=" + getDireccion() + ", getLegajo()=" + getLegajo() + ", getArea()=" + ", getHorario()=" + getHorario() + ", getGenero()=" + getGenero() + ", getCuil()=" + getCuil() + "]";
+		return "Empleado:" + "\nClase: " + getClass() + "\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
+				+ "\nEdad: " + getEdad() + "\nSueldo: $" + getSueldo() + "\nMail: " + getMail()
+				+ "\nFecha de contratacion: " + getFechaDeContratacion() + "\nTelefono: " + getTelefono()
+				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nCuil: " + getCuil();
 	}
 	
 	/*public String toString() {

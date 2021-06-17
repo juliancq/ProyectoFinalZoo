@@ -14,7 +14,7 @@ public class Guia extends Empleado
 
 	public Guia(String nombre, String apellido, int dni, int edad, double sueldo, String mail, Date fechaDeContratacion,
 			int telefono, String direccion, int legajo, String horario, char genero, int cuil, String areaDeTrabajo) {
-		super(nombre, apellido, dni, edad, sueldo, mail, fechaDeContratacion, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.areaDeTrabajo = areaDeTrabajo;
 		idiomas = new ArrayList<String>();
