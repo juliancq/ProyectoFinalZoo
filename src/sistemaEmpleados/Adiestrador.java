@@ -30,10 +30,17 @@ public class Adiestrador extends Empleado
 	}
 
 
+	public String devolverClase()
+	{
+		return "Adiestrador";
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString() + "\nClase: Adiestrador\nEspecilidad: " + getEspecilidad() + "\n-------------------------";
 	}
+
+	
 
 	
 

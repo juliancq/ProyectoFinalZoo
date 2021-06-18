@@ -20,6 +20,7 @@ public abstract class Empleado
 	private char genero;
 	private long cuil;
 	private boolean alta = false;
+	private boolean empDelMes = false;
 	
 	public Empleado() {
 		// TODO Auto-generated constructor stub
@@ -132,6 +133,16 @@ public abstract class Empleado
 		alta = false;
 	}
 	
+	public void altaEmpDelMes()
+	{
+		empDelMes = true;
+	}
+	
+	public void bajaEmpDelMes()
+	{
+		empDelMes = false;
+	}
+	
 	@Override
 	public String toString() {
 		return "Empleado:" + "\n-------------------------\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
@@ -140,23 +151,9 @@ public abstract class Empleado
 				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nCuil: " + getCuil();
 	}
 	
-	/*public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\nNif: ");
-        sb.append(nif);
-        sb.append("\nSueldo Base: ");
-        sb.append(sueldoBase);
-        sb.append("\nHoras Extras: ");
-        sb.append(horasExtras);
-        sb.append("\ntipo IRPF: ");
-        sb.append(tipoIRPF);
-        sb.append("\nCasado: ");
-        sb.append(casado);
-        sb.append("\nNúmero de Hijos: ");
-        sb.append(numeroHijos);
-        return  sb.toString();
-    }
-	*/
+
+	
+	
 	public abstract double calcularSueldo();
 	
 	

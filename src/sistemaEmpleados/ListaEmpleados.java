@@ -42,7 +42,21 @@ public class ListaEmpleados
 		}
 		return builder.toString();
 	}
-
+	
+	
+	public <T> String listarPorClase(T Class)
+	{
+		StringBuilder builder = new StringBuilder();
+		
+		Empleado aux = new Adiestrador();
+		aux.getClass();
+		for(int i=0;i<lista.size();i++)
+		{
+			
+		}
+		
+	}
+	
 	/**
 	 * Cuenta la cantidad de empleados de la lista
 	 * @return
@@ -171,6 +185,11 @@ public class ListaEmpleados
 			}
 		}
 		return null;
+	}
+	
+	public Empleado buscarEmpleadoDelMes()
+	{
+		int 
 	}
 
 }
