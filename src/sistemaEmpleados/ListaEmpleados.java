@@ -44,20 +44,22 @@ public class ListaEmpleados
 	}
 	
 	
-	public <T> String listarPorClase(T aux)
+	public <T extends Empleado>String listarPorClase(T Clase)
 	{
 		StringBuilder builder = new StringBuilder();
 		
-		
 		for(int i=0;i<lista.size();i++)
 		{
-			if(lista.get(i))
+			if(lista.get(i).getClass()==Clase.getClass())
 			{
-				
+				builder.append(lista.get(i).toString());
 			}
 		}
 		
+		return builder.toString();
+		
 	}
+	
 	
 	/**
 	 * Cuenta la cantidad de empleados de la lista
@@ -68,6 +70,22 @@ public class ListaEmpleados
 		return lista.size();
 	}
 
+	
+	public <T extends Empleado>int contarPorClase(T Clase)
+	{
+		StringBuilder builder = new StringBuilder();
+		int contador = 0;
+		
+		for(int i=0;i<lista.size();i++)
+		{
+			if(lista.get(i).getClass()==Clase.getClass())
+			{
+				contador++;
+			}
+		}
+		return contador;
+	}
+	
 	/**
 	 * Da de alta a un empleado segun el nro de legajo
 	 * @param legajo

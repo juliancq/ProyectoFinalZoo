@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 
-
-
 public class Sector<T> {
 	
 	private HashSet<T> animales;
@@ -98,62 +96,6 @@ public class Sector<T> {
 			setContadorID(getContadorId() + 1);
 		}
 		
-	}
-	
-	/**
-	 * Busca un animal por id, si lo halla lo elimina, sino retorna null;
-	 * 
-	 * ¡PROBAR!
-	 * @param idAnimal
-	 */
-	public void borrarAnimal(int idAnimal) {
-		
-		Iterator it = animales.iterator();
-		
-		while(it.hasNext()) {
-			
-			if(((Animal)it.next()).getID() == idAnimal) {
-				
-				animales.remove(it.next());
-			}
-		}
-	}
-	
-	
-	/**
-	 * Retorna la cantidad de animaale
-	 * 
-	 * @return int cantidad de animales en el sector
-	 */
-	public int contarAnimales() {
-		
-		return animales.size();
-	}
-		
-	
-	/**
-	 * Busca un animal y retorna sus datos 
-	 * 
-	 * ¡Probar!
-	 * 
-	 * @param id 
-	 * @return String con datos del animal
-	 */
-	public String buscarAnimal(int id) {
-		
-		String data = "";
-		
-		Iterator it = animales.iterator();
-		
-		while(it.hasNext()) {
-			
-			if(((Animal)it.next()).getID() == id) {
-				
-				data = (((Animal) it.next()).toString()); 
-			}
-		}
-		
-		return data;
 	}
 	
 	

@@ -151,9 +151,6 @@ public abstract class Empleado
 				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nCuil: " + getCuil();
 	}
 	
-
-	
-	
 	public abstract double calcularSueldo();
 	
 	
