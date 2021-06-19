@@ -10,8 +10,7 @@ public class Servicio_al_cliente extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 		
-	public Servicio_al_cliente(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
-			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
+	public Servicio_al_cliente(String nombre, String apellido, int dni, int edad, double sueldo, String mail, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
 			String area) {
 		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
@@ -25,13 +24,13 @@ public class Servicio_al_cliente extends Empleado
 	public void setArea(String area) {
 		this.area = area;
 	}
-
+	
+	
 	@Override
 	public double calcularSueldo() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 
 
 	@Override

@@ -207,10 +207,65 @@ public class ListaEmpleados
 		return null;
 	}
 	
-	/*
-	public Empleado buscarEmpleadoDelMes()
+	/**
+	 * Recibe un entero y lo almacena en el arreglo de calificaciones que tiene cada empleado
+	 * @param num
+	 */
+	public void calificarAtencion(int legajo, int num)
 	{
-		
+		if(num>=1 && num<=10)
+		{
+			for(int i=0;i<lista.size();i++)
+			{
+				if(legajo == lista.get(i).getLegajo())
+				{
+					lista.get(i).agregarCalificacion(num);
+				}
+			}
+		}
+		else
+		{
+			System.out.println("Fuera de rango...");
+		}
 	}
-	*/
+	
+	/**
+	 * Calcula el promedio de las calificaciones en el arreglo de calificaciones de cada empleado
+	 * @param legajo
+	 * @return el promedio total de todas las calificaciones
+	 */
+	public double calcularCalificacionTotal(int legajo)
+	{
+		double total = 0;
+		for(int i=0;i<lista.size();i++)
+		{
+			if(legajo == lista.get(i).getLegajo())
+			{
+				total = lista.get(i).calcularCalificacion();
+			}
+		}
+		return total;
+	}
+	
+	/**
+	 * busca el empleado con la maxima calificacion acumulada
+	 * @return el legajo del empleado con la maxima calificacion
+	 */
+	public int buscarEmpleadoDelMes()
+	{
+		double calificacionActual = 0;
+		double maximaCalificacion = 0;
+		int legajo = lista.get(0).getLegajo();
+		for(int i=0;i<lista.size();i++)
+		{
+			calificacionActual = lista.get(i).calcularCalificacion();
+			if(calificacionActual>maximaCalificacion)
+			{
+				maximaCalificacion = calificacionActual;
+				legajo = lista.get(i).getLegajo();
+			}
+		}
+		return legajo; 
+	}
+	
 }

@@ -20,6 +20,8 @@ public abstract class Empleado
 	private char genero;
 	private long cuil;
 	private boolean alta = false;
+	private int calificacion[] = new int[100];
+	private int posActual = 0;
 	private boolean empDelMes = false;
 	
 	public Empleado() {
@@ -143,9 +145,27 @@ public abstract class Empleado
 		empDelMes = false;
 	}
 	
+	public void agregarCalificacion(int num)
+	{
+		calificacion[posActual] = num;
+		posActual++;
+	}
+	
+	public double calcularCalificacion()
+	{
+		int cant = 0;
+		double total = 0;
+		for(int i=0;i<posActual;i++)
+		{
+			cant++;
+			total = total + calificacion[i];
+		}
+		return total/cant;
+	}
+	
 	@Override
 	public String toString() {
-		return "Empleado:" + "\n-------------------------\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
+		return "\nEmpleado:" + "\n-------------------------\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
 				+ "\nEdad: " + getEdad() + "\nSueldo: $" + getSueldo() + "\nMail: " + getMail()
 				+ "\nFecha de contratacion: " + getFechaDeContratacion() + "\nTelefono: " + getTelefono()
 				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nCuil: " + getCuil();
