@@ -44,15 +44,17 @@ public class ListaEmpleados
 	}
 	
 	
-	public <T> String listarPorClase(T Class)
+	public <T> String listarPorClase(T aux)
 	{
 		StringBuilder builder = new StringBuilder();
 		
-		Empleado aux = new Adiestrador();
-		aux.getClass();
+		
 		for(int i=0;i<lista.size();i++)
 		{
-			
+			if(lista.get(i))
+			{
+				
+			}
 		}
 		
 	}
@@ -187,9 +189,10 @@ public class ListaEmpleados
 		return null;
 	}
 	
+	/*
 	public Empleado buscarEmpleadoDelMes()
 	{
-		int 
+		
 	}
-
+	*/
 }
