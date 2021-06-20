@@ -11,12 +11,13 @@ public class Cuidador extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Cuidador(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
+	public Cuidador(String nombre, String apellido, int dni, int edad, String mail,
 			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
 			int sector) {
-		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.sector = sector;
+		super.setSueldo(50000);
 	}
 
 	public int getSector() {
@@ -27,14 +28,6 @@ public class Cuidador extends Empleado
 		this.sector = sector;
 	}
 	
-	@Override
-	public double calcularSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
 	@Override
 	public String toString() {
 		return super.toString() + "\nClase: Cuidador\nSector: " + getSector() + "\n-------------------------";

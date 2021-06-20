@@ -1,20 +1,21 @@
 package sistemaEmpleados;
 
-import java.util.Date;
 
 public class Servicio_al_cliente extends Empleado
 {
 	private String area;//atencion telefonica,candy shop, cafe, etc...
 	
+	
 	public Servicio_al_cliente() {
 		// TODO Auto-generated constructor stub
 	}
 		
-	public Servicio_al_cliente(String nombre, String apellido, int dni, int edad, double sueldo, String mail, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
+	public Servicio_al_cliente(String nombre, String apellido, int dni, int edad, String mail, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
 			String area) {
-		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.area = area;
+		super.setSueldo(40000);
 	}
 
 	public String getArea() {
@@ -25,14 +26,6 @@ public class Servicio_al_cliente extends Empleado
 		this.area = area;
 	}
 	
-	
-	@Override
-	public double calcularSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
 	@Override
 	public String toString() {
 		return super.toString() + "\nClase: Servicio al cliente\nArea: " + getArea() + "\n-------------------------";

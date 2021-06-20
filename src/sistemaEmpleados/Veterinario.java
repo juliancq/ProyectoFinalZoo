@@ -1,39 +1,33 @@
 package sistemaEmpleados;
 
-import java.util.Date;
 
 public class Veterinario extends Empleado
 {
 	private int matricula;
 	
+	
 	public Veterinario() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Veterinario(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
-			Date fechaDeContratacion, int telefono, String direccion, int legajo, String area, String horario,
+	public Veterinario(String nombre, String apellido, int dni, int edad, String mail, int telefono, String direccion, int legajo, String area, String horario,
 			char genero, int cuil, int matricula) {
-		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo,
 				horario, genero, cuil);
 		this.matricula = matricula;
+		super.setSueldo(65000);
 	}
 
 	public int getMatricula() {
 		return matricula;
 	}
 	
-	@Override
-	public double calcularSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
 	}
-
-
 
 	@Override
 	public String toString() {
 		return super.toString() + "\nClase: Veterinario\nMatricula: " + getMatricula() + "\n-------------------------";
 	}
-	
-	
 }

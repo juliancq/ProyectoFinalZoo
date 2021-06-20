@@ -7,17 +7,19 @@ public class Guia extends Empleado
 {
 	private String areaDeTrabajo;
 	private ArrayList<String> idiomas;
+	
 
 	public Guia() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Guia(String nombre, String apellido, int dni, int edad, double sueldo, String mail, Date fechaDeContratacion,
+	public Guia(String nombre, String apellido, int dni, int edad, String mail, Date fechaDeContratacion,
 			int telefono, String direccion, int legajo, String horario, char genero, int cuil, String areaDeTrabajo) {
-		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.areaDeTrabajo = areaDeTrabajo;
 		idiomas = new ArrayList<String>();
+		super.setSueldo(43000);
 	}
 
 	public String getAreaDeTrabajo() {
@@ -43,18 +45,9 @@ public class Guia extends Empleado
 		return builder.toString();
 	}
 
-	@Override
-	public double calcularSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
+	
 	@Override
 	public String toString() {
 		return super.toString() + "\nClase: Guia\nAreaDeTrabajo: " + getAreaDeTrabajo() + "\n-------------------------";
 	}
-	
-	
 }

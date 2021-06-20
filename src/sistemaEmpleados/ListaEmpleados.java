@@ -73,7 +73,6 @@ public class ListaEmpleados
 	
 	public <T extends Empleado>int contarPorClase(T Clase)
 	{
-		StringBuilder builder = new StringBuilder();
 		int contador = 0;
 		
 		for(int i=0;i<lista.size();i++)
@@ -267,5 +266,4 @@ public class ListaEmpleados
 		}
 		return legajo; 
 	}
-	
 }

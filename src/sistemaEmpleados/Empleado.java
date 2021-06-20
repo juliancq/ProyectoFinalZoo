@@ -10,7 +10,6 @@ public abstract class Empleado
 	private String apellido;
 	private int dni;
 	private int edad;
-	private double sueldo;
 	private String mail;
 	private Date fechaDeContratacion;
 	private long telefono;
@@ -22,20 +21,20 @@ public abstract class Empleado
 	private boolean alta = false;
 	private int calificacion[] = new int[100];
 	private int posActual = 0;
-	private boolean empDelMes = false;
+	private double sueldo = 0;
+	
 	
 	public Empleado() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Empleado(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
+	public Empleado(String nombre, String apellido, int dni, int edad, String mail,
 			long telefono, String direccion, int legajo, String horario, char genero, long cuil) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.edad = edad;
-		this.sueldo = sueldo;
 		this.mail = mail;
 		this.fechaDeContratacion = generarFechaActual();
 		this.telefono = telefono;
@@ -69,10 +68,6 @@ public abstract class Empleado
 
 	public int getEdad() {
 		return edad;
-	}
-
-	public double getSueldo() {
-		return sueldo;
 	}
 
 	public String getMail() {
@@ -110,10 +105,6 @@ public abstract class Empleado
 	public boolean getAlta() {
 		return alta;
 	}
-	
-	public void setSueldo(double sueldo) {
-		this.sueldo = sueldo;
-	}
 
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
@@ -127,22 +118,20 @@ public abstract class Empleado
 		this.horario = horario;
 	}
 	
+	public double getSueldo() {
+		return sueldo;
+	}
+	
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
+	}
+	
 	public void darAlta() {
 		alta = true;
 	}
 	
 	public void darBaja() {
 		alta = false;
-	}
-	
-	public void altaEmpDelMes()
-	{
-		empDelMes = true;
-	}
-	
-	public void bajaEmpDelMes()
-	{
-		empDelMes = false;
 	}
 	
 	public void agregarCalificacion(int num)
@@ -166,12 +155,8 @@ public abstract class Empleado
 	@Override
 	public String toString() {
 		return "\nEmpleado:" + "\n-------------------------\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDni: " + getDni()
-				+ "\nEdad: " + getEdad() + "\nSueldo: $" + getSueldo() + "\nMail: " + getMail()
+				+ "\nEdad: " + getEdad() + "\nMail: " + getMail()
 				+ "\nFecha de contratacion: " + getFechaDeContratacion() + "\nTelefono: " + getTelefono()
-				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nCuil: " + getCuil();
+				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nSueldo: $" + getSueldo() + "\nCuil: " + getCuil();
 	}
-	
-	public abstract double calcularSueldo();
-	
-	
 }

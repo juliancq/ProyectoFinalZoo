@@ -10,12 +10,13 @@ public class Administrativo extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Administrativo(String nombre, String apellido, int dni, int edad, double sueldo, String mail,
+	public Administrativo(String nombre, String apellido, int dni, int edad, String mail,
 			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
 			String puesto) {
-		super(nombre, apellido, dni, edad, sueldo, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
 				genero, cuil);
 		this.puesto = puesto;
+		super.setSueldo(45000);
 	}
 
 	public String getPuesto() {
@@ -25,19 +26,9 @@ public class Administrativo extends Empleado
 	public void setPuesto(String puesto) {
 		this.puesto = puesto;
 	}
-	
-	
-	@Override
-	public double calcularSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nClase: Administrativo\nPuesto: " + getPuesto() + "\n-------------------------";
+		return super.toString() + "\nClase: Administrativo\nPuesto: " + "\nPuesto: " + getPuesto() + "\n-------------------------";
 	}
-	
 }
