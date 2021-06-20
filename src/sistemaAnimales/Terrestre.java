@@ -12,8 +12,8 @@ public class Terrestre extends Animal{
 	}
 	
 	public Terrestre(String nombre, double peso, String raza, String especie, String estadoSalud, String sexo,
-			String tipoAlimentacion, double alimentacionDiaria, Date fechaDeNacimiento, boolean esFertil) {
-		super(nombre, peso, raza, especie, estadoSalud, sexo, tipoAlimentacion, alimentacionDiaria, fechaDeNacimiento);
+			double alimentacionDiaria, Date fechaDeNacimiento, boolean esFertil) {
+		super(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fechaDeNacimiento);
 		
 		this.esFertil = esFertil;
 	}

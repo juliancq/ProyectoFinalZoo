@@ -11,9 +11,9 @@ public class Animal {
 	private String especie;
 	private String estadoSalud;//Activo - En recuperacion
 	private String sexo;
-	//private String tipoAlimentacion;//Omnivoro, herbivoro, carnívoro
 	private double alimentacionDiaria;//En kg
 	private Date fechaDeNacimiento;
+	private LibretaMedica historiaClinica;
 	
 	public Animal()
 	{
@@ -23,17 +23,25 @@ public class Animal {
 		especie = "No especificada";
 		estadoSalud = "Activo";
 		sexo = "Macho";
+		alimentacionDiaria = 0;
 		fechaDeNacimiento = new Date();
+		historiaClinica = new LibretaMedica();
 	}
 
 	public Animal(String nombre, String especie, String sexo) {
 		this.nombre = nombre;
+		this.peso = 0;
+		this.raza = "No especificada";
 		this.especie = especie;
+		this.estadoSalud = "Activo";
 		this.sexo = sexo;
+		this.alimentacionDiaria = 0;
+		this.fechaDeNacimiento = new Date();
+		historiaClinica = new LibretaMedica();
 	}
 
 	public Animal(String nombre, double peso, String raza, String especie, String estadoSalud, String sexo,
-				String tipoAlimentacion, double alimentacionDiaria, Date fechaDeNacimiento) {
+				 double alimentacionDiaria, Date fechaDeNacimiento) {
 		super();
 		this.nombre = nombre;
 		this.peso = peso;
@@ -41,9 +49,9 @@ public class Animal {
 		this.especie = especie;
 		this.estadoSalud = estadoSalud;
 		this.sexo = sexo;
-		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.alimentacionDiaria = alimentacionDiaria;
-		//this.tipoAlimentacion = tipoAlimentacion;
+		this.fechaDeNacimiento = fechaDeNacimiento;
+		historiaClinica = new LibretaMedica();
 	}
 
 	public String getNombre() {
@@ -104,9 +112,9 @@ public class Animal {
 	
 	
 	public String toString() {
-		return "Animal [getNombre()=" + getNombre() + ", getPeso()=" + getPeso() + ", getRaza()=" + getRaza()
-				+ ", getEspecie()=" + getEspecie() + ", getEstadoSalud()=" + getEstadoSalud() + ", getSexo()="
-				+ getSexo() + ", getFechaDeNacimiento()=" + getFechaDeNacimiento() + "]";
+		return "Animal [Nombre:" + getNombre() + ", Peso:" + getPeso() + ", Raza:" + getRaza()
+				+ ", Especie:" + getEspecie() + ", Estado de Salud:" + getEstadoSalud() + ", Sexo:"
+				+ getSexo() + ", Fecha de Nacimiento:" + getFechaDeNacimiento() + "]";
 	}
 
 	public boolean equals(Animal obj)
