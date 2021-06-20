@@ -11,7 +11,7 @@ public class Animal {
 	private String especie;
 	private String estadoSalud;//Activo - En recuperacion
 	private String sexo;
-	private String tipoAlimentacion;//Omnivoro, herbivoro, carnívoro
+	//private String tipoAlimentacion;//Omnivoro, herbivoro, carnívoro
 	private double alimentacionDiaria;//En kg
 	private Date fechaDeNacimiento;
 	
@@ -43,7 +43,7 @@ public class Animal {
 		this.sexo = sexo;
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.alimentacionDiaria = alimentacionDiaria;
-		this.tipoAlimentacion = tipoAlimentacion;
+		//this.tipoAlimentacion = tipoAlimentacion;
 	}
 
 	public String getNombre() {
@@ -79,9 +79,11 @@ public class Animal {
 		return ID;
 	}
 	
+	/*
 	public String getTipoAlimentacion() {
 		return tipoAlimentacion;
 	}
+	*/
 	
 	public double getAlimentacionDiaria() {
 		return alimentacionDiaria;
