@@ -12,12 +12,12 @@ public abstract class Empleado
 	private int edad;
 	private String mail;
 	private Date fechaDeContratacion;
-	private long telefono;
+	private String telefono;
 	private String direccion;
-	private int legajo;
+	private int legajo = 0;
 	private String horario;
 	private char genero;
-	private long cuil;
+	private String cuil;
 	private boolean alta = false;
 	private int calificacion[] = new int[100];
 	private int posActual = 0;
@@ -29,7 +29,7 @@ public abstract class Empleado
 	}
 
 	public Empleado(String nombre, String apellido, int dni, int edad, String mail,
-			long telefono, String direccion, int legajo, String horario, char genero, long cuil) {
+			String telefono, String direccion, String horario, char genero, String cuil) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -39,7 +39,6 @@ public abstract class Empleado
 		this.fechaDeContratacion = generarFechaActual();
 		this.telefono = telefono;
 		this.direccion = direccion;
-		this.legajo = legajo;
 		this.horario = horario;
 		this.genero = genero;
 		this.cuil = cuil;
@@ -78,7 +77,7 @@ public abstract class Empleado
 		return fechaDeContratacion;
 	}
 
-	public long getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
@@ -98,7 +97,7 @@ public abstract class Empleado
 		return genero;
 	}
 
-	public long getCuil() {
+	public String getCuil() {
 		return cuil;
 	}
 
@@ -106,7 +105,7 @@ public abstract class Empleado
 		return alta;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -124,6 +123,10 @@ public abstract class Empleado
 	
 	public void setSueldo(double sueldo) {
 		this.sueldo = sueldo;
+	}
+	
+	public void setLegajo(int legajo) {
+		this.legajo = legajo;
 	}
 	
 	public void darAlta() {
@@ -159,4 +162,5 @@ public abstract class Empleado
 				+ "\nFecha de contratacion: " + getFechaDeContratacion() + "\nTelefono: " + getTelefono()
 				+ "\nDireccion: " + getDireccion() + "\nLegajo: " + getLegajo() + "\nHorario: " + getHorario() + "\nGenero: " + getGenero() + "\nSueldo: $" + getSueldo() + "\nCuil: " + getCuil();
 	}
+	
 }

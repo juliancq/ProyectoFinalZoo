@@ -1,21 +1,16 @@
 package sistemaEmpleados;
 
-import java.util.Date;
 
-public class Seguridad extends Empleado
-{
+public class Seguridad extends Empleado {
 	private int sector;
-	
-	
+
 	public Seguridad() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Seguridad(String nombre, String apellido, int dni, int edad, String mail,
-			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
-			int sector) {
-		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
-				genero, cuil);
+			String telefono, String direccion, String horario, char genero, String cuil, int sector) {
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil);
 		this.sector = sector;
 		super.setSueldo(47000);
 	}
@@ -23,7 +18,7 @@ public class Seguridad extends Empleado
 	public int getSector() {
 		return sector;
 	}
-	
+
 	public void setSector(int sector) {
 		this.sector = sector;
 	}

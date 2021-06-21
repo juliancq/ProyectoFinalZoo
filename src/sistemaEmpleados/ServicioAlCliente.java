@@ -1,18 +1,18 @@
 package sistemaEmpleados;
 
 
-public class Servicio_al_cliente extends Empleado
+public class ServicioAlCliente extends Empleado
 {
 	private String area;//atencion telefonica,candy shop, cafe, etc...
 	
 	
-	public Servicio_al_cliente() {
+	public ServicioAlCliente() {
 		// TODO Auto-generated constructor stub
 	}
 		
-	public Servicio_al_cliente(String nombre, String apellido, int dni, int edad, String mail, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
+	public ServicioAlCliente(String nombre, String apellido, int dni, int edad, String mail, String telefono, String direccion, String horario, char genero, String cuil,
 			String area) {
-		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, horario,
 				genero, cuil);
 		this.area = area;
 		super.setSueldo(40000);

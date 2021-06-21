@@ -1,6 +1,6 @@
 package sistemaEmpleados;
 
-import java.util.Date;
+
 
 public class Administrativo extends Empleado
 {
@@ -10,10 +10,9 @@ public class Administrativo extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Administrativo(String nombre, String apellido, int dni, int edad, String mail,
-			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
+	public Administrativo(String nombre, String apellido, int dni, int edad, String mail, String telefono, String direccion, String horario, char genero, String cuil,
 			String puesto) {
-		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, horario,
 				genero, cuil);
 		this.puesto = puesto;
 		super.setSueldo(45000);

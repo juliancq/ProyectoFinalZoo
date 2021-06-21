@@ -18,6 +18,7 @@ public class ListaEmpleados
 	 */
 	public void addEmpleado(Empleado e)
 	{
+		e.setLegajo(lista.size());
 		lista.add(e);
 	}
 	/**
@@ -163,7 +164,7 @@ public class ListaEmpleados
 	 * @param legajo
 	 * @param telefono
 	 */
-	public void modificarTelefono(int legajo, int telefono)
+	public void modificarTelefono(int legajo, String telefono)
 	{
 		for(int i=0;i<lista.size();i++)
 		{

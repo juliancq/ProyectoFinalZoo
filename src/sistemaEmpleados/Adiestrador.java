@@ -10,9 +10,8 @@ public class Adiestrador extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Adiestrador(String nombre, String apellido, int dni, int edad, String mail, long telefono, String direccion,
-			int legajo, String horario, char genero, long cuil, String especilidad, int horasTrabajadasMensuales) {
-		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario, genero, cuil);
+	public Adiestrador(String nombre, String apellido, int dni, int edad, String mail, String telefono, String direccion, String horario, char genero, String cuil, String especilidad, int horasTrabajadasMensuales) {
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil);
 		this.especilidad = especilidad;
 		this.horasTrabajadasMensuales = horasTrabajadasMensuales;
 		super.setSueldo(calcularSueldo());

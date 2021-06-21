@@ -1,6 +1,6 @@
 package sistemaEmpleados;
 
-import java.util.Date;
+
 
 public class Cuidador extends Empleado
 {
@@ -11,10 +11,9 @@ public class Cuidador extends Empleado
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Cuidador(String nombre, String apellido, int dni, int edad, String mail,
-			Date fechaDeContratacion, int telefono, String direccion, int legajo, String horario, char genero, int cuil,
+	public Cuidador(String nombre, String apellido, int dni, int edad, String mail, String telefono, String direccion, String horario, char genero, String cuil,
 			int sector) {
-		super(nombre, apellido, dni, edad, mail, telefono, direccion, legajo, horario,
+		super(nombre, apellido, dni, edad, mail, telefono, direccion, horario,
 				genero, cuil);
 		this.sector = sector;
 		super.setSueldo(50000);
