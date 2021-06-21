@@ -239,6 +239,9 @@ public class Sector<T extends Animal> {
 		return lista;
 	}
 
+	/**
+	 * Setea el atributo ultimaFechaMantenimiento a la fecha y hora actual
+	 */
 	public void hacerMantenimiento() {
 
 		setUltimaFechaMantenimiento(new Date());
