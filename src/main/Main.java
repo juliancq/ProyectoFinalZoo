@@ -11,7 +11,15 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		Zoologico zoo = new Zoologico();
 		
+		zoo = PersistenciaZoo.leerZoo();
+		
+		//MENU
+		
+		System.out.println(zoo);
+		
+		PersistenciaZoo.guardarZoo(zoo);
 	}
 
 }
