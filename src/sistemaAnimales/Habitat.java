@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * 
  * @implements Serializable
  */
-public class Habitat implements Serializable{
+public class Habitat implements Serializable {
 
 	private double temperatura;
 	private String tipo;
@@ -17,7 +17,7 @@ public class Habitat implements Serializable{
 	int ID;
 	int idContador = 0; /* Contador autoincremental para la asignacion de ID a los Sectores */
 
-	/* Constructores */
+	
 	public Habitat() {
 		temperatura = 0;
 		tipo = "No especificado";
@@ -30,7 +30,7 @@ public class Habitat implements Serializable{
 		sectores = new ArrayList<>();
 	}
 
-	/* Getters & Setters */
+	
 	public double getTemperatura() {
 		return temperatura;
 	}
@@ -46,11 +46,19 @@ public class Habitat implements Serializable{
 	public void setIdContador(int idContador) {
 		this.idContador = idContador;
 	}
+	
+	public void setTemperatura(double temperatura) {
+		this.temperatura = temperatura;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 	@Override
 	public String toString() {
 
-		return "HABITAT = " + getTipo() + "\nTEMPERATURA = " + getTemperatura() + "°" + "\nSectores: "
+		return "HABITAT = " + getTipo() + "\nTEMPERATURA = " + getTemperatura() + "°" + "\nSECTORES: "
 				+ listarSectores();
 	}
 
@@ -79,7 +87,7 @@ public class Habitat implements Serializable{
 
 		for (int i = 0; i < sectores.size(); i++) {
 
-			lista = lista + "\n -" + sectores.get(i).getIdSector() + ") " +sectores.get(i).getNombreSector();
+			lista = lista + "\n -" + sectores.get(i).getIdSector() + ") " + sectores.get(i).getNombreSector();
 		}
 
 		return lista;

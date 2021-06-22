@@ -4,26 +4,26 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
- * Comentar
+ * Clase padre de todo animal, mantiene amplia informacion acerca del animal Id,
+ * nombre, peso, raza, especie, estado, sexo, alimentacion diaria, fecha de
+ * nacimiento y su libreta medica
  *
  * @implements Serializable
  */
-public class Animal implements Serializable{
-	
+public class Animal implements Serializable {
+
 	private int ID;
 	private String nombre;
 	private double peso;
 	private String raza;
 	private String especie;
-	private String estadoSalud;//Activo - En recuperacion
+	private String estadoSalud;// Activo - En recuperacion
 	private String sexo;
-	private double alimentacionDiaria;//En kg
+	private double alimentacionDiaria;// En kg
 	private Date fechaDeNacimiento;
 	private LibretaMedica historiaClinica;
-	
-	public Animal()
-	{
+
+	public Animal() {
 		nombre = "No especificado";
 		peso = 0;
 		raza = "No especificada";
@@ -48,7 +48,7 @@ public class Animal implements Serializable{
 	}
 
 	public Animal(String nombre, double peso, String raza, String especie, String estadoSalud, String sexo,
-				 double alimentacionDiaria, Date fechaDeNacimiento) {
+			double alimentacionDiaria, Date fechaDeNacimiento) {
 		super();
 		this.nombre = nombre;
 		this.peso = peso;
@@ -89,21 +89,18 @@ public class Animal implements Serializable{
 		return fechaDeNacimiento;
 	}
 
-
 	public int getID() {
 		return ID;
 	}
-	
+
 	/*
-	public String getTipoAlimentacion() {
-		return tipoAlimentacion;
-	}
-	*/
-	
+	 * public String getTipoAlimentacion() { return tipoAlimentacion; }
+	 */
+
 	public double getAlimentacionDiaria() {
 		return alimentacionDiaria;
 	}
-	
+
 	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
@@ -115,18 +112,17 @@ public class Animal implements Serializable{
 	public void setAlimentacionDiaria(double alimentacionDiaria) {
 		this.alimentacionDiaria = alimentacionDiaria;
 	}
-	
-	
-	
+
 	public String toString() {
-		return "Animal [Nombre:" + getNombre() + ", Peso:" + getPeso() + ", Raza:" + getRaza()
-				+ ", Especie:" + getEspecie() + ", Estado de Salud:" + getEstadoSalud() + ", Sexo:"
-				+ getSexo() + ", Fecha de Nacimiento:" + getFechaDeNacimiento() + "]";
+		return "Animal [Nombre:" + getNombre() + ", Peso:" + getPeso() + ", Raza:" + getRaza() + ", Especie:"
+				+ getEspecie() + ", Estado de Salud:" + getEstadoSalud() + ", Sexo:" + getSexo()
+				+ ", Fecha de Nacimiento:" + getFechaDeNacimiento() + "]";
 	}
 
-	public boolean equals(Animal obj)
-	{
-		if(obj.getNombre()==getNombre()&&obj.getEspecie()==getEspecie()&&obj.getID()==getID())return true;
-		else return false;
+	public boolean equals(Animal obj) {
+		if (obj.getNombre() == getNombre() && obj.getEspecie() == getEspecie() && obj.getID() == getID())
+			return true;
+		else
+			return false;
 	}
 }

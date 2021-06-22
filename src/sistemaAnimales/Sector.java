@@ -14,7 +14,7 @@ import java.util.Iterator;
  * @implements Serializable
  * @param <T> extends Animal
  */
-public class Sector<T extends Animal> implements Serializable{
+public class Sector<T extends Animal> implements Serializable {
 
 	private HashSet<T> animales;
 	private double stockAlimento = 0;
@@ -24,7 +24,6 @@ public class Sector<T extends Animal> implements Serializable{
 	private int contadorId = 0; /* Contador autoincremental para la asignacion de ID a los Animales */
 	private int capacidad;
 
-	/* Constructores */
 	public Sector() {
 
 		this.nombreSector = "No especificado";
@@ -38,7 +37,6 @@ public class Sector<T extends Animal> implements Serializable{
 		this.capacidad = capacidad;
 	}
 
-	/* Getters & Setters */
 	public String getNombreSector() {
 
 		return nombreSector;
@@ -90,6 +88,10 @@ public class Sector<T extends Animal> implements Serializable{
 		this.nombreSector = nombreSector;
 	}
 
+	public void setCapacidad(int capacidad) {
+		this.capacidad = capacidad;
+	}
+
 	public int getCantidadAnimales() {
 
 		return animales.size();
@@ -120,7 +122,7 @@ public class Sector<T extends Animal> implements Serializable{
 				}
 
 			} catch (Exception e) {
-				
+
 				System.out.println(e.toString());
 			}
 
