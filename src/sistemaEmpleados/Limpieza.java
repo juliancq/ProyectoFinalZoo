@@ -1,6 +1,6 @@
 package sistemaEmpleados;
 
-public class Limpieza extends Empleado {
+public class Limpieza extends Empleado implements ICalculoSueldo{
 	
 	private int horasTrabajadasMensuales;
 
@@ -13,14 +13,24 @@ public class Limpieza extends Empleado {
 		super.setSueldo(calcularSueldo());
 	}
 
+	public int getHorasTrabajadasMensuales() {
+		return horasTrabajadasMensuales;
+	}
+	
+	public void setHorasTrabajadasMensuales(int horasTrabajadasMensuales) {
+		this.horasTrabajadasMensuales = horasTrabajadasMensuales;
+	}
+	
+	/**
+	 * multiplica las horas trabajadas mensuales por el monto
+	 * a cobrar por hora y lo devuelve
+	 */
 	public double calcularSueldo() {
 		return (horasTrabajadasMensuales * 600);
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nClase: Limpieza"
-				+ "\n-------------------------";
+		return super.toString() + "\nClase: Limpieza\nHoras trbajadas: " + getHorasTrabajadasMensuales() + "\n-------------------------";
 	}
-
 }

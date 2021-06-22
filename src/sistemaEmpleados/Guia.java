@@ -20,11 +20,20 @@ public class Guia extends Empleado
 		super.setSueldo(43000);
 	}
 	
+	/**
+	 * Recibe un idioma nuevo y lo agrega a la lista de idiomas que 
+	 * conoce el guia.
+	 * @param idioma
+	 */
 	public void addIdiomas(String idioma)
 	{
 		idiomas.add(idioma);
 	}
 
+	/**
+	 * Junta el arreglo de idiomas en un StringBuilder
+	 * y lo devuelve.
+	 */
 	public String listarIdiomas()
 	{
 		StringBuilder builder = new StringBuilder();

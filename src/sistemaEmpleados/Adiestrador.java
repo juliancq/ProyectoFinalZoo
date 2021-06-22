@@ -1,7 +1,7 @@
 package sistemaEmpleados;
 
 
-public class Adiestrador extends Empleado 
+public class Adiestrador extends Empleado implements ICalculoSueldo 
 {
 	private String especilidad; //especialista en que animales
 	private int horasTrabajadasMensuales;
@@ -17,22 +17,32 @@ public class Adiestrador extends Empleado
 		super.setSueldo(calcularSueldo());
 	}
 
+	public int getHorasTrabajadasMensuales() {
+		return horasTrabajadasMensuales;
+	}
+	
 	public String getEspecilidad() {
 		return especilidad;
 	}
 	
+	public void setEspecilidad(String especilidad) {
+		this.especilidad = especilidad;
+	}
+	
+	public void setHorasTrabajadasMensuales(int horasTrabajadasMensuales) {
+		this.horasTrabajadasMensuales = horasTrabajadasMensuales;
+	}
+	
+	/**
+	 * multiplica las horas trabajadas mensuales por el monto
+	 * a cobrar por hora y lo devuelve
+	 */
 	public double calcularSueldo() {
 		return (horasTrabajadasMensuales*1000);
 	}
 	
 	@Override
 	public String toString() {
-		return super.toString() + "\nClase: Adiestrador\nEspecilidad: " + getEspecilidad() + "\n-------------------------";
+		return super.toString() + "\nClase: Adiestrador\nEspecilidad: " + getEspecilidad() + "\nHoras trabajadas: " + getHorasTrabajadasMensuales() + "\n-------------------------";
 	}
-
-	
-
-	
-
-	
 }

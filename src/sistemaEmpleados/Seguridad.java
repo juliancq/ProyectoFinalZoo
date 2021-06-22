@@ -2,6 +2,7 @@ package sistemaEmpleados;
 
 
 public class Seguridad extends Empleado {
+	
 	private int sector;
 
 	public Seguridad() {

@@ -45,6 +45,10 @@ public abstract class Empleado implements Serializable
 		this.cuil = cuil;
 	}
 
+	/**
+	 * Genera automaticamente la fecha del dia actual
+	 * y la devuelve.
+	 */
 	public Date generarFechaActual()
     {
         Calendar calendario = new GregorianCalendar();
@@ -130,20 +134,34 @@ public abstract class Empleado implements Serializable
 		this.legajo = legajo;
 	}
 	
+	/**
+	 * Cambia el estado del atributo alta en true
+	 */
 	public void darAlta() {
 		alta = true;
 	}
 	
+	/**
+	 * cambia el estado del atributo alta en false
+	 */
 	public void darBaja() {
 		alta = false;
 	}
 	
+	/**
+	 * Agrega un numero entero al arreglo de calificaciones del empleado
+	 * @param num
+	 */
 	public void agregarCalificacion(int num)
 	{
 		calificacion[posActual] = num;
 		posActual++;
 	}
 	
+	/**
+	 * suma el total del arreglo de calificaciones, lo divide
+	 * por la cantidad total de calificaciones y devuelve el promedio.
+	 */
 	public double calcularCalificacion()
 	{
 		int cant = 0;

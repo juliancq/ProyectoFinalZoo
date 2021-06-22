@@ -45,7 +45,13 @@ public class ListaEmpleados implements Serializable
 		return builder.toString();
 	}
 	
-	
+	/**
+	 * Agrega un en StringBuilder una clase especifica de empleados
+	 * que ingresa por parametro, y luego devuelve ese String.
+	 * @param <T>
+	 * @param Clase
+	 * @return
+	 */
 	public <T extends Empleado>String listarPorClase(T Clase)
 	{
 		StringBuilder builder = new StringBuilder();
@@ -72,7 +78,13 @@ public class ListaEmpleados implements Serializable
 		return lista.size();
 	}
 
-	
+	/**
+	 * Cuenta la cantidad de empleados de la lista dependiendo
+	 * de la clase de empleado que ingresa por parametro y lo retorna.
+	 * @param <T>
+	 * @param Clase
+	 * @return
+	 */
 	public <T extends Empleado>int contarPorClase(T Clase)
 	{
 		int contador = 0;
