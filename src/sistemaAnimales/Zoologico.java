@@ -35,6 +35,11 @@ public class Zoologico implements Serializable {
 		}
 	}
 
+	public ListaEmpleados getListaEmpleados() {
+		
+		return listaEmpleados;
+	}
+	
 	public String toString() {
 		StringBuilder cadena = new StringBuilder();
 
