@@ -1,5 +1,6 @@
 package sistemaAnimales;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,9 +11,10 @@ import java.util.Iterator;
  * animales y se los asigna Mantiene datos sobre la ultima fecha de
  * mantenimiento y el stock de alimentos
  *
+ * @implements Serializable
  * @param <T> extends Animal
  */
-public class Sector<T extends Animal> {
+public class Sector<T extends Animal> implements Serializable{
 
 	private HashSet<T> animales;
 	private double stockAlimento = 0;

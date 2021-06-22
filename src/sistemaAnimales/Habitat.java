@@ -1,13 +1,15 @@
 package sistemaAnimales;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Esta clase contiene sectores donde habitaran los distintos tipos de animales
  * Contiene un contador que asigna automaticamente los id a los nuevos sectores
  * 
+ * @implements Serializable
  */
-public class Habitat {
+public class Habitat implements Serializable{
 
 	private double temperatura;
 	private String tipo;

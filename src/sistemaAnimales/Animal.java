@@ -1,8 +1,15 @@
 package sistemaAnimales;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Animal {
+/**
+ * 
+ * Comentar
+ *
+ * @implements Serializable
+ */
+public class Animal implements Serializable{
 	
 	private int ID;
 	private String nombre;

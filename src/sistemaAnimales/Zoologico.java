@@ -1,10 +1,16 @@
 package sistemaAnimales;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class Zoologico {
+/**
+ * Comentar
+ * 
+ * @implements Serializable
+ */
+public class Zoologico implements Serializable{
 	
 	private ArrayList<Habitat> lista;
 
