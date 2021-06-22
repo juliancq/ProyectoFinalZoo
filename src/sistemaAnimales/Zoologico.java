@@ -40,6 +40,11 @@ public class Zoologico implements Serializable {
 		return listaEmpleados;
 	}
 	
+	public Habitat getHabitat(int indice) {
+		
+		return lista.get(indice);
+	}
+	
 	public String toString() {
 		StringBuilder cadena = new StringBuilder();
 
