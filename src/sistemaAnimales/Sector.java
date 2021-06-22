@@ -157,7 +157,7 @@ public class Sector<T extends Animal> implements Serializable {
 	}
 
 	/**
-	 * Busca un animal y retorna sus datos
+	 * Busca un animal y lo retorna
 	 * 
 	 * 
 	 * @param id
