@@ -1,8 +1,9 @@
 package sistemaEmpleados;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListaEmpleados 
+public class ListaEmpleados implements Serializable 
 {
 	private ArrayList <Empleado> lista;
 	/**

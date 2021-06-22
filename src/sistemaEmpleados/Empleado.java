@@ -1,10 +1,11 @@
 package sistemaEmpleados;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public abstract class Empleado 
+public abstract class Empleado implements Serializable
 {
 	private String nombre;
 	private String apellido;

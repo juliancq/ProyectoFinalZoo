@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import sistemaEmpleados.ListaEmpleados;
+
 /**
  * Comentar
  * 
@@ -13,10 +15,12 @@ import javax.swing.JOptionPane;
 public class Zoologico implements Serializable{
 	
 	private ArrayList<Habitat> lista;
+	private ListaEmpleados listaEmpleados;
 
 	public Zoologico()
 	{
 		lista = new ArrayList<>();
+		listaEmpleados = new ListaEmpleados();
 	}
 	
 	public void agregarHabitat(Habitat aux)
