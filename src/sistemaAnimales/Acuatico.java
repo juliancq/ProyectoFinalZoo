@@ -11,14 +11,21 @@ public class Acuatico extends Animal{
 	}
 
 	public Acuatico(String nombre, double peso, String raza, String especie, String estadoSalud, String sexo,
-			String tipoAlimentacion, double alimentacionDiaria, Date fechaDeNacimiento) {
+			double alimentacionDiaria, Date fechaDeNacimiento) {
 		super(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fechaDeNacimiento);
-		this.tipoAlimentacion = tipoAlimentacion;
 	}
 
 	public Acuatico(String nombre, String especie, String sexo) {
 		super(nombre, especie, sexo);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void setTipoAlimentacion(String tipoAlimentacion) {
+		this.tipoAlimentacion = tipoAlimentacion;
+	}
+	
+	public String getTipoAlimentacion() {
+		return tipoAlimentacion;
 	}
 	
 	public String toString()

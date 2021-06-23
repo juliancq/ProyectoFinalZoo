@@ -10,9 +10,8 @@ public class Herbivoro extends Terrestre{
 	}
 
 	public Herbivoro(String nombre, double peso, String raza, String especie, String estadoSalud, String sexo,
-			 double alimentacionDiaria, Date fechaDeNacimiento, boolean esFertil) {
-		super(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fechaDeNacimiento,
-				esFertil);
+			 double alimentacionDiaria, Date fechaDeNacimiento) {
+		super(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fechaDeNacimiento);
 		// TODO Auto-generated constructor stub
 	}
 
