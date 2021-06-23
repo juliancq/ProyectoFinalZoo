@@ -17,35 +17,61 @@ public class Zoologico implements Serializable {
 	private ArrayList<Habitat> lista;
 	private ListaEmpleados listaEmpleados;
 
-	public Zoologico() {
+	public Zoologico()
+	{
 		lista = new ArrayList<>();
 		listaEmpleados = new ListaEmpleados();
 	}
+	
 
-	public void agregarHabitat(Habitat aux) {
+	public void agregarHabitat(Habitat aux)
+	{
 		aux.setIdContador(lista.size());
 		lista.add(aux);
 	}
 
-	public void eliminar(String tipo) {
-		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).equals(tipo)) {
-				lista.remove(i);
-			}
-		}
-	}
-
-	public ListaEmpleados getListaEmpleados() {
-		
-		return listaEmpleados;
+	
+	public void eliminarHabitatPorNombre(String tipo)
+	{
+		lista.remove(buscarHabitatPorNombre(tipo));
 	}
 	
-	public Habitat getHabitat(int indice) {
+	
+	public Habitat buscarHabitatPorNombre(String tipo)
+	{
+		Habitat retorno = null;
 		
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).equals(tipo)) {
+				retorno = lista.get(i);
+			}
+		}
+		
+		return retorno;
+	}
+	
+	
+	public String getNombresDeHabitat()
+	{
+		StringBuilder cadena = new StringBuilder();
+		
+		for(int i=0;i<lista.size();i++)
+		{
+			cadena.append(lista.get(i).getTipo()+"\n");
+		}
+		
+		return cadena.toString();
+	}
+	
+	
+	public Habitat getHabitat(int indice)
+	{
 		return lista.get(indice);
 	}
 	
-	public String toString() {
+	
+	public String toString()
+	{
 		StringBuilder cadena = new StringBuilder();
 
 		for (int i = 0; i < lista.size(); i++) {
@@ -54,5 +80,7 @@ public class Zoologico implements Serializable {
 
 		return cadena.toString();
 	}
+	
+	////////////////////////Parte Empleados Debajo
 
 }
