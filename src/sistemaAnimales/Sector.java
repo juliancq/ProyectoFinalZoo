@@ -105,11 +105,10 @@ public class Sector<T extends Animal> implements Serializable {
 	 * @param T nuevo(clase extendida de animal)
 	 * @return void
 	 */
-	public void agregarAnimal(T nuevo) {
+	public void agregarAnimal(T nuevo) throws Exception {
 
 		if (nuevo instanceof Animal) {
 
-			try {
 
 				if (contarAnimales() < capacidad) {
 
@@ -120,14 +119,8 @@ public class Sector<T extends Animal> implements Serializable {
 
 					throw new Exception("Habitat lleno");
 				}
-
-			} catch (Exception e) {
-
-				System.out.println(e.toString());
-			}
-
+		
 		}
-
 	}
 
 	/**
