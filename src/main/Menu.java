@@ -35,7 +35,7 @@ public class Menu {
 
 	public Menu() {
 		PersistenciaZoo per = new PersistenciaZoo();
-		zoo = new Zoologico();
+		zoo = PersistenciaZoo.leerZoo();
 		administracion = zoo.getListaEmpleados();
 	}
 
@@ -154,7 +154,14 @@ public class Menu {
 	
 	public void planillaAnimal(Animal ani)
 	{
+		int respuesta = -1;
 		
+		while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4)
+		{
+			respuesta = Integer.parseInt(JOptionPane.showInputDialog(ani));
+			
+			
+		}
 	}
 
 //Método que permite el ingreso de información para hacer una carga de un Hábitat
