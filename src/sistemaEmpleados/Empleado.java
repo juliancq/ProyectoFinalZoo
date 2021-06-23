@@ -7,6 +7,10 @@ import java.util.GregorianCalendar;
 
 public class Empleado implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String apellido;
 	private int dni;

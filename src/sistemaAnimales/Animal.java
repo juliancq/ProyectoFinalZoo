@@ -12,6 +12,10 @@ import java.util.Date;
  */
 public class Animal implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int ID;
 	private String nombre;
 	private double peso;

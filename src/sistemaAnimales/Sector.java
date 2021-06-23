@@ -16,6 +16,10 @@ import java.util.Iterator;
  */
 public class Sector<T extends Animal> implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HashSet<T> animales;
 	private double stockAlimento = 0;
 	private Date ultimaFechaMantenimiento = null;

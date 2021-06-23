@@ -14,6 +14,10 @@ import sistemaEmpleados.ListaEmpleados;
  */
 public class Zoologico implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Habitat>lista;
 
 	public Zoologico()

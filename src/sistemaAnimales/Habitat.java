@@ -11,6 +11,10 @@ import java.util.ArrayList;
  */
 public class Habitat implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double temperatura;
 	private String tipo;
 	private ArrayList<Sector> sectores;

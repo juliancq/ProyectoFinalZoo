@@ -14,6 +14,10 @@ import java.util.GregorianCalendar;
  */
 public class LibretaMedica implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<String> historiaClinica;
 	private Date ultimaFechaDeRevision;
 
