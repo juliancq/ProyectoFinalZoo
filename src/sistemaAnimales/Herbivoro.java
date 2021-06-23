@@ -4,6 +4,11 @@ import java.util.Date;
 
 public class Herbivoro extends Terrestre{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Herbivoro() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -4,6 +4,11 @@ import java.util.Date;
 
 public class Omnivoro extends Terrestre{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Omnivoro() {
 		super();
 		// TODO Auto-generated constructor stub

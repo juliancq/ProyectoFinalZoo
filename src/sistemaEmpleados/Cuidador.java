@@ -4,6 +4,10 @@ package sistemaEmpleados;
 
 public class Cuidador extends Empleado
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int sector = 0; //asignarle un sector de animales
 	
 	

@@ -4,6 +4,11 @@ import java.util.Date;
 
 public class Carnivoro extends Terrestre{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Carnivoro() {
 		super();
 		// TODO Auto-generated constructor stub

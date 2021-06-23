@@ -3,6 +3,10 @@ package sistemaEmpleados;
 
 public class Seguridad extends Empleado {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int sector = 0;
 
 	public Seguridad() {

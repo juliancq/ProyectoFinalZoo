@@ -3,6 +3,10 @@ package sistemaEmpleados;
 
 public class Adiestrador extends Empleado implements ICalculoSueldo 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String especilidad = null; //especialista en que animales
 	private int horasTrabajadasMensuales = 0;
 	

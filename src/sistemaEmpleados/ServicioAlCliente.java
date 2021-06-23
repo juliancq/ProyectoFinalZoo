@@ -3,6 +3,10 @@ package sistemaEmpleados;
 
 public class ServicioAlCliente extends Empleado
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String area = null;//atencion telefonica,candy shop, cafe, etc...
 	
 	

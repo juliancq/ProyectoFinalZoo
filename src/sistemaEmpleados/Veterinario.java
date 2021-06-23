@@ -1,6 +1,10 @@
 package sistemaEmpleados;
 
 public class Veterinario extends Empleado {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String matricula = null;
 
 	public Veterinario() {
