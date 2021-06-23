@@ -96,7 +96,7 @@ public class Menu {
 		while (respuesta != 4)
 		{
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Salir"));
+						"Habitat: " + hab.getTipo()+ "\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Salir"));
 
 			switch (respuesta)
 			{
@@ -140,7 +140,7 @@ public class Menu {
 
 		int tipoSector = -1;
 		
-		while(tipoSector!=1||tipoSector!=2||tipoSector!=3||tipoSector!=4)
+		while(tipoSector!=1&&tipoSector!=2&&tipoSector!=3&&tipoSector!=4)
 		{
 			tipoSector = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de animales que este sector contendrá\n\n1-Voladores\n2-Acuáticos\n3-Terrestres\n4-Volver"));
 			
@@ -154,6 +154,9 @@ public class Menu {
 				break;
 			case 3:
 				ingresarTipoAlimentacion(hab,nombreSector,capacidadSector);
+				break;
+			case 4:
+				//hacer nada
 				break;
 			default:
 				mostrarMensajeError();
@@ -170,9 +173,8 @@ public class Menu {
 		int opcion = -1;
 		
 		
-		while(opcion==-1)
+		while(opcion!=1&&opcion!=2&&opcion!=3&&opcion!=4)
 		{
-			int contador = 0;
 			opcion = Integer.parseInt(JOptionPane.showInputDialog("Usted ha elegido Terrestes.\n\nPor favor, especifique qué tipo de terrestre:\n\n1-Carnínoro\n2-Omnivoro\n3-Herbívoro\n4-Volver"));
 			
 			switch(opcion)
