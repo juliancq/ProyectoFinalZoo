@@ -19,10 +19,12 @@ public class Zoologico implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Habitat>lista;
+	private ListaEmpleados administracion;
 
 	public Zoologico()
 	{
 		lista = new ArrayList<>();
+		administracion = new ListaEmpleados();
 	}
 	
 
@@ -85,6 +87,8 @@ public class Zoologico implements Serializable {
 		return cadena.toString();
 	}
 	
-	////////////////////////Parte Empleados Debajo
-
+	public ListaEmpleados getListaEmpleados()
+	{
+		return administracion;
+	}
 }

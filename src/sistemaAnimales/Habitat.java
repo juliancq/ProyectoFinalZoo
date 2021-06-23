@@ -128,4 +128,19 @@ public class Habitat implements Serializable {
 
 		return sectores.get(idSector);
 	}
+	
+	
+	public Sector buscarSectorPorNombre(String nombre)
+	{
+		Sector retorno = null;
+		for(int i=0;i<sectores.size();i++)
+		{
+			if(sectores.get(i).getNombreSector().equals(nombre))
+			{
+				retorno = sectores.get(i);
+			}
+		}
+		
+		return retorno;
+	}
 }
