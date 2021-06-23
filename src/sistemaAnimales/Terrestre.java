@@ -4,6 +4,12 @@ import java.util.Date;
 
 public class Terrestre extends Animal{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public Terrestre() {
 		super();
 	}

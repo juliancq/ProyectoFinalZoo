@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public class Guia extends Empleado
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<String> idiomas;
 
 

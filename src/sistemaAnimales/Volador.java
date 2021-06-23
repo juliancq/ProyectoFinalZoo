@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class Volador extends Animal{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String tipoAlimentacion;//Omnivoro, herbivoro, carnívoro
 	
 	public Volador() {

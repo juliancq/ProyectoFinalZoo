@@ -2,6 +2,10 @@ package sistemaEmpleados;
 
 public class Limpieza extends Empleado implements ICalculoSueldo{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int horasTrabajadasMensuales = 0;
 
 	public Limpieza() {

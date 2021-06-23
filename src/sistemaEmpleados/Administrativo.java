@@ -4,6 +4,10 @@ package sistemaEmpleados;
 
 public class Administrativo extends Empleado
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String puesto = null;
 	
 	public Administrativo() {
