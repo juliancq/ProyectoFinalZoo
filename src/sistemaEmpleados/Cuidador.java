@@ -4,7 +4,7 @@ package sistemaEmpleados;
 
 public class Cuidador extends Empleado
 {
-	private int sector; //asignarle un sector de animales
+	private int sector = 0; //asignarle un sector de animales
 	
 	
 	public Cuidador() {

@@ -3,7 +3,7 @@ package sistemaEmpleados;
 
 public class Seguridad extends Empleado {
 	
-	private int sector;
+	private int sector = 0;
 
 	public Seguridad() {
 		// TODO Auto-generated constructor stub

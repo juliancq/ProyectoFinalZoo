@@ -4,7 +4,7 @@ package sistemaEmpleados;
 
 public class Administrativo extends Empleado
 {
-	private String puesto;
+	private String puesto = null;
 	
 	public Administrativo() {
 		// TODO Auto-generated constructor stub

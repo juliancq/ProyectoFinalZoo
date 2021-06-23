@@ -3,8 +3,8 @@ package sistemaEmpleados;
 
 public class Adiestrador extends Empleado implements ICalculoSueldo 
 {
-	private String especilidad; //especialista en que animales
-	private int horasTrabajadasMensuales;
+	private String especilidad = null; //especialista en que animales
+	private int horasTrabajadasMensuales = 0;
 	
 	public Adiestrador() {
 		// TODO Auto-generated constructor stub
