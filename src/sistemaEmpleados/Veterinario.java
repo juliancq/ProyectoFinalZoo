@@ -1,7 +1,7 @@
 package sistemaEmpleados;
 
 public class Veterinario extends Empleado {
-	private String matricula;
+	private String matricula = null;
 
 	public Veterinario() {
 		// TODO Auto-generated constructor stub

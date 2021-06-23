@@ -2,7 +2,7 @@ package sistemaEmpleados;
 
 public class Limpieza extends Empleado implements ICalculoSueldo{
 	
-	private int horasTrabajadasMensuales;
+	private int horasTrabajadasMensuales = 0;
 
 	public Limpieza() {
 		// TODO Auto-generated constructor stub

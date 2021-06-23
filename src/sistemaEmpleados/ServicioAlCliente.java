@@ -3,7 +3,7 @@ package sistemaEmpleados;
 
 public class ServicioAlCliente extends Empleado
 {
-	private String area;//atencion telefonica,candy shop, cafe, etc...
+	private String area = null;//atencion telefonica,candy shop, cafe, etc...
 	
 	
 	public ServicioAlCliente() {
