@@ -5,7 +5,11 @@ import javax.swing.JOptionPane;
 
 import manejoArchivos.PersistenciaZoo;
 import sistemaAnimales.Acuatico;
+import sistemaAnimales.Animal;
+import sistemaAnimales.Carnivoro;
 import sistemaAnimales.Habitat;
+import sistemaAnimales.Herbivoro;
+import sistemaAnimales.Omnivoro;
 import sistemaAnimales.Sector;
 import sistemaAnimales.Volador;
 import sistemaAnimales.Zoologico;
@@ -19,7 +23,7 @@ public class Menu {
 	public Menu()
 	{
 		PersistenciaZoo per = new PersistenciaZoo();
-		zoo = per.leerZoo();
+		zoo = new Zoologico();
 		administracion = new ListaEmpleados();
 	}
 	
@@ -72,13 +76,14 @@ public class Menu {
 						"\n¿En qué Hábitat desea ingresar?\n"));
 				
 				Habitat entrar = zoo.buscarHabitatPorNombre(respuestaHabitat);
+				
 				menuSector(entrar);
 				break;
 			case 4:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
-				JOptionPane.showMessageDialog(null, "Opción invalida");
+				mostrarMensajeError();
 				break;
 			}
 		}
@@ -96,7 +101,7 @@ public class Menu {
 			switch (respuesta)
 			{
 			case 1:
-				//hab.agregarSector(ingresarInformacionSector());
+				ingresarInformacionSector(hab);
 				break;
 			case 2:
 				System.out.println(hab.toString());
@@ -108,7 +113,7 @@ public class Menu {
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
-				JOptionPane.showMessageDialog(null, "Opción invalida");
+				mostrarMensajeError();
 				break;
 			}
 		}
@@ -127,23 +132,75 @@ public class Menu {
 		Habitat aux = new Habitat(temperatura,tipo);
 		return aux;
 	}
-	/*
-	private Sector ingresarInformacionSector()
+	
+	private void ingresarInformacionSector(Habitat hab)
 	{
 		String nombreSector = JOptionPane.showInputDialog("Ingrese el nombre del Sector");
 		int capacidadSector = Integer.parseInt(JOptionPane.showInputDialog("Ingrese capacidad total del Sector"));
-		int tipoSector = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de animales que este sector contendrá\n\n1-Voladores\n2-Acuáticos\n3-Terrestres"));
+
+		int tipoSector = -1;
 		
-		Sector retorno = null;
-		
-		while(tipoSector!=1||tipoSector!=2||tipoSector!=3)
+		while(tipoSector!=1||tipoSector!=2||tipoSector!=3||tipoSector!=4)
 		{
-			if(tipoSector==1)
+			tipoSector = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de animales que este sector contendrá\n\n1-Voladores\n2-Acuáticos\n3-Terrestres\n4-Volver"));
+			
+			switch(tipoSector)
 			{
-				retorno = new Sector<Volador>();
+			case 1:
+				hab.agregarSector(new Sector<Volador>(nombreSector,capacidadSector));
+				break;
+			case 2:
+				hab.agregarSector(new Sector<Acuatico>(nombreSector,capacidadSector));
+				break;
+			case 3:
+				ingresarTipoAlimentacion(hab,nombreSector,capacidadSector);
+				break;
+			default:
+				mostrarMensajeError();
+				break;
 			}
+			
 		}
 		
 	}
-	*/
+	
+	//Me quede trabado en esta funcion de mierda que anda como el culo. Ya probé de todo. Sé que se está agregando bien porque si haces toString lo comprobas. Pero no entiendo porque pija no sale del while
+	private void ingresarTipoAlimentacion(Habitat hab, String nombreSector, int capacidad)
+	{
+		int opcion = -1;
+		
+		
+		while(opcion==-1)
+		{
+			int contador = 0;
+			opcion = Integer.parseInt(JOptionPane.showInputDialog("Usted ha elegido Terrestes.\n\nPor favor, especifique qué tipo de terrestre:\n\n1-Carnínoro\n2-Omnivoro\n3-Herbívoro\n4-Volver"));
+			
+			switch(opcion)
+			{
+			case 1:
+				hab.agregarSector(new Sector<Carnivoro>(nombreSector,capacidad));
+				break;
+			case 2:
+				hab.agregarSector(new Sector<Omnivoro>(nombreSector,capacidad));
+				break;
+			case 3:
+				hab.agregarSector(new Sector<Herbivoro>(nombreSector,capacidad));
+				break;
+			case 4:
+				//hacer nada
+				break;
+			default:
+				opcion=-1;
+				mostrarMensajeError();
+				break;
+			}
+		}
+	}
+	
+	
+	private void mostrarMensajeError()
+	{
+		JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, vuelva a intentarlo");
+	}
+	
 }

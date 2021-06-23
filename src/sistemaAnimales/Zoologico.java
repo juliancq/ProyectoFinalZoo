@@ -14,13 +14,11 @@ import sistemaEmpleados.ListaEmpleados;
  */
 public class Zoologico implements Serializable {
 
-	private ArrayList<Habitat> lista;
-	private ListaEmpleados listaEmpleados;
+	private ArrayList<Habitat>lista;
 
 	public Zoologico()
 	{
 		lista = new ArrayList<>();
-		listaEmpleados = new ListaEmpleados();
 	}
 	
 
@@ -41,12 +39,14 @@ public class Zoologico implements Serializable {
 	{
 		Habitat retorno = null;
 		
-		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).equals(tipo)) {
+		for(int i = 0; i < lista.size(); i++)
+		{
+			if(lista.get(i).getTipo().equals(tipo))
+			{
 				retorno = lista.get(i);
 			}
 		}
-		
+
 		return retorno;
 	}
 	
