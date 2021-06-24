@@ -62,6 +62,7 @@ public class Menu {
 				break;
 			case 3:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
+				PersistenciaZoo.guardarZoo(zoo);
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Opción invalida");
@@ -1168,6 +1169,7 @@ public class Menu {
 					}
 					int horas = Integer.parseInt(horass);
 					aux1.setHorasTrabajadasMensuales(horas);
+					aux1.setSueldo(aux1.calcularSueldo());
 					administracion.addEmpleado(aux1);
 					break;
 				case 2:
@@ -1215,6 +1217,7 @@ public class Menu {
 					}
 					int hhoras = Integer.parseInt(horasss);
 					aux5.setHorasTrabajadasMensuales(hhoras);
+					aux5.setSueldo(aux5.calcularSueldo());
 					administracion.addEmpleado(aux5);
 					break;
 				case 6:
