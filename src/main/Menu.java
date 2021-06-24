@@ -321,10 +321,17 @@ public class Menu {
 				ani.getHistoriaClinica().actualizar(diagnostico);
 				break;
 			case 2:
-				System.out.println(ani.getHistoriaClinica().toString());
+				if(ani.getHistoriaClinica().toString()!=null)
+				{
+					
+				}
+				System.out.println();
 				break;
 			case 3:
-				System.out.println(ani.getHistoriaClinica().ultimaRevisión());
+				if(ani.getHistoriaClinica().ultimaRevisión()!=null)
+				{
+					System.out.println(ani.getHistoriaClinica().ultimaRevisión());
+				}
 				break;
 			case 4:
 				System.out.println(ani.toString());
