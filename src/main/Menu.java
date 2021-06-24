@@ -44,8 +44,14 @@ public class Menu {
 		int respuesta = -1;
 
 		while (respuesta != 3) {
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Menú Principal\n\nIngrese una opción \n1-Administración.\n2-Zoológico.\n3-Salir"));
+			String out = JOptionPane.showInputDialog(
+					"Menú Principal\n\nIngrese una opción \n1-Administración.\n2-Zoológico.\n3-Salir");
+			while(!ComprobarTipo.isNumero(out))
+			{
+				out = JOptionPane.showInputDialog(
+						"Menú Principal\n\nIngrese una opción \n1-Administración.\n2-Zoológico.\n3-Salir");
+			}
+			respuesta = Integer.parseInt(out);
 
 			switch (respuesta) {
 			case 1:
@@ -68,9 +74,15 @@ public class Menu {
 		int respuesta = -1;
 
 		while (respuesta != 6) {
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir"));
-
+			String out = JOptionPane.showInputDialog(
+					"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir");
+			while(!ComprobarTipo.isNumero(out))
+			{
+				out = JOptionPane.showInputDialog(
+						"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir");
+			}
+			respuesta = Integer.parseInt(out);
+			
 			switch (respuesta) {
 			case 1:
 				zoo.agregarHabitat(ingresarInformacionHabitat());
@@ -80,18 +92,30 @@ public class Menu {
 				break;
 			case 3:
 				String ingresarHabitat = (JOptionPane.showInputDialog("\n¿En qué Hábitat desea ingresar?\n"));
+				while(!ComprobarTipo.isAlfabetico(ingresarHabitat))
+				{
+					ingresarHabitat = (JOptionPane.showInputDialog("\n¿En qué Hábitat desea ingresar?\n"));
+				}
 
 				Habitat entrar = zoo.buscarHabitatPorNombre(ingresarHabitat);
 				menuSector(entrar);
 				break;
 			case 4:
 				String modificacionHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea modificar?\n"));
+				while(!ComprobarTipo.isAlfabetico(modificacionHabitat))
+				{
+					modificacionHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea modificar?\n"));
+				}
 
 				Habitat modificar = zoo.buscarHabitatPorNombre(modificacionHabitat);
 				modificarHabitat(modificar);
 				break;
 			case 5:
 				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea eliminar?\n"));
+				while(!ComprobarTipo.isAlfabetico(eliminarHabitat))
+				{
+					eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea eliminar?\n"));
+				}
 
 				zoo.eliminarHabitatPorNombre(eliminarHabitat);
 				break;
@@ -108,10 +132,16 @@ public class Menu {
 	public void menuSector(Habitat hab) {
 		int respuesta = -1;
 
-		while (respuesta != 6) {
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar Sector\n5-Eliminar Sector\n6-Salir"));
-
+		while (respuesta != 5) {
+			String out = JOptionPane.showInputDialog(
+					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar Sector\n5-Eliminar Sector\n6-Salir");
+			while(!ComprobarTipo.isNumero(out))
+			{
+				out = JOptionPane.showInputDialog(
+						"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar Sector\n5-Eliminar Sector\n6-Salir");
+			}
+			respuesta = Integer.parseInt(out);
+			
 			switch (respuesta) {
 			case 1:
 				ingresarInformacionSector(hab);
@@ -121,19 +151,30 @@ public class Menu {
 				break;
 			case 3:
 				String ingresarSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea ingresar?\n"));
+				while(!ComprobarTipo.isAlfabetico(ingresarSector))
+				{
+					ingresarSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea ingresar?\n"));
+				}
 
 				Sector entrar = hab.buscarSectorPorNombre(ingresarSector);
 				menuAnimales(entrar);
 				break;
 			case 4:
 				String modificacionSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea modificar?\n"));
+				while(!ComprobarTipo.isAlfabetico(modificacionSector))
+				{
+					modificacionSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea modificar?\n"));
+				}
 
 				Sector modificar = hab.buscarSectorPorNombre(modificacionSector);
 				modificarSector(modificar);
 				break;
 			case 5:
 				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Sector desea eliminar?\n"));
-
+				while(!ComprobarTipo.isAlfabetico(eliminarHabitat))
+				{
+					eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Sector desea eliminar?\n"));
+				}
 				hab.eliminarSectorPorNombre(eliminarHabitat);
 				break;
 			case 6:
@@ -150,9 +191,15 @@ public class Menu {
 		int respuesta = -1;
 
 		while (respuesta != 8) {
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Habitat: " + sec.getNombreSector()
-					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Reponer stock Alimento\n6-Alimentar\n7-Hacer mantenimiento\n8-Salir"));
-
+			String out = JOptionPane.showInputDialog("Habitat: " + sec.getNombreSector()
+					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Reponer stock Alimento\n6-Alimentar\n7-Hacer mantenimiento\n8-Salir");
+			while(!ComprobarTipo.isNumero(out))
+			{
+				out = JOptionPane.showInputDialog("Habitat: " + sec.getNombreSector()
+				+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Reponer stock Alimento\n6-Alimentar\n7-Hacer mantenimiento\n8-Salir");
+			}
+			respuesta = Integer.parseInt(out);
+			
 			switch (respuesta) {
 			case 1:
 				ingresarInformacionAnimal(sec);
@@ -163,18 +210,30 @@ public class Menu {
 			case 3:
 				String respuestaSector = (JOptionPane
 						.showInputDialog("\n¿A qué planilla desea ingresar? Ingrese nombre del animal\n"));
-				
+				while(!ComprobarTipo.isAlfabetico(respuestaSector))
+				{
+					respuestaSector = (JOptionPane
+							.showInputDialog("\n¿A qué planilla desea ingresar? Ingrese nombre del animal\n"));
+				}
 				Animal entrar = sec.buscarAnimalPorNombre(respuestaSector);
 				planillaAnimal(entrar);
 				break;
 			case 4:
 				String nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
+				while(!ComprobarTipo.isAlfabetico(nombre))
+				{
+					nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
+				}
 				sec.borrarAnimalPorNombre(nombre);
 				break;
 			case 5:
-				double nuevoStock = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de entrada"));
-				
-				sec.reponerStock(nuevoStock);
+				String nuevoStock = JOptionPane.showInputDialog("Ingrese la cantidad de entrada");
+				while(!ComprobarTipo.isNumero(nuevoStock))
+				{
+					nuevoStock = JOptionPane.showInputDialog("Ingrese la cantidad de entrada");
+				}
+				double nnuevoStock = Double.parseDouble(nuevoStock);
+				sec.reponerStock(nnuevoStock);
 				break;
 			case 6:
 				try {
@@ -206,13 +265,23 @@ public class Menu {
 		
 		while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4)
 		{
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver"));
+			String out = JOptionPane.showInputDialog(
+					"Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver");
+			while(!ComprobarTipo.isNumero(out))
+			{
+				out = JOptionPane.showInputDialog(
+						"Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver");
+			}
+			respuesta = Integer.parseInt(out);
 			
 			switch(respuesta)
 			{
 			case 1:
 				String diagnostico = JOptionPane.showInputDialog("Ingrese su diagnóstico para el animal");
+				while(!ComprobarTipo.isAlfabetico(diagnostico))
+				{
+					diagnostico = JOptionPane.showInputDialog("Ingrese su diagnóstico para el animal");
+				}
 				ani.getHistoriaClinica().actualizar(diagnostico);
 				break;
 			case 2:
@@ -240,9 +309,17 @@ public class Menu {
 //Método que permite el ingreso de información para hacer una carga de un Hábitat
 	private Habitat ingresarInformacionHabitat() {
 		String tipo = JOptionPane.showInputDialog("Ingrese el tipo de Hábitat(Sabana, Selva, Marino, etc..)");
-		double temperatura = Double.parseDouble(JOptionPane.showInputDialog("Ingrese temperatura media del Hábitat"));
-
-		Habitat aux = new Habitat(temperatura, tipo);
+		while(!ComprobarTipo.isAlfabetico(tipo))
+		{
+			tipo = JOptionPane.showInputDialog("Ingrese el tipo de Hábitat(Sabana, Selva, Marino, etc..)");
+		}
+		String temperatura = JOptionPane.showInputDialog("Ingrese temperatura media del Hábitat");
+		while(!ComprobarTipo.isNumero(temperatura))
+		{
+			temperatura = JOptionPane.showInputDialog("Ingrese temperatura media del Hábitat");
+		}
+		double ttemperatura = Double.parseDouble(temperatura);
+		Habitat aux = new Habitat(ttemperatura, tipo);
 		return aux;
 	}
 
@@ -250,26 +327,41 @@ public class Menu {
 //guardados en un objeto de este tipo y posteriormente cargados en un Hábitat que recibe por parámetro
 	private void ingresarInformacionSector(Habitat hab) {
 		String nombreSector = JOptionPane.showInputDialog("Ingrese el nombre del Sector");
-		int capacidadSector = Integer.parseInt(JOptionPane.showInputDialog("Ingrese capacidad total del Sector"));
-
+		while(!ComprobarTipo.isAlfabetico(nombreSector))
+		{
+			nombreSector = JOptionPane.showInputDialog("Ingrese el nombre del Sector");
+		}
+		String capacidadSector = JOptionPane.showInputDialog("Ingrese capacidad total del Sector");
+		while(!ComprobarTipo.isNumero(capacidadSector))
+		{
+			capacidadSector = JOptionPane.showInputDialog("Ingrese capacidad total del Sector");
+		}
+		int ccapacidadSector = Integer.parseInt(capacidadSector);
+		
 		int tipoSector = -1;
 
 		while (tipoSector != 1 && tipoSector != 2 && tipoSector != 3 && tipoSector != 4) {
-			tipoSector = Integer.parseInt(JOptionPane.showInputDialog(
-					"Ingrese el tipo de animales que este sector contendrá\n\n1-Voladores\n2-Acuáticos\n3-Terrestres\n4-Volver"));
-
+			String out = JOptionPane.showInputDialog(
+					"Ingrese el tipo de animales que este sector contendrá\n\n1-Voladores\n2-Acuáticos\n3-Terrestres\n4-Volver");
+			while(!ComprobarTipo.isNumero(out))
+			{
+				out = JOptionPane.showInputDialog(
+						"Ingrese el tipo de animales que este sector contendrá\n\n1-Voladores\n2-Acuáticos\n3-Terrestres\n4-Volver");
+			}
+			tipoSector = Integer.parseInt(out);
+			
 			switch (tipoSector) {
 			case 1:
-				hab.agregarSector(new Sector<Volador>(nombreSector, capacidadSector));
+				hab.agregarSector(new Sector<Volador>(nombreSector, ccapacidadSector));
 				break;
 			case 2:
-				hab.agregarSector(new Sector<Acuatico>(nombreSector, capacidadSector));
+				hab.agregarSector(new Sector<Acuatico>(nombreSector, ccapacidadSector));
 				break;
 			case 3:
-				ingresarTipoAlimentacion(hab, nombreSector, capacidadSector);
+				ingresarTipoAlimentacion(hab, nombreSector, ccapacidadSector);
 				break;
 			case 4:
-				// hacer nada
+				//volver
 				break;
 			default:
 				mostrarMensajeError();
