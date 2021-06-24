@@ -81,7 +81,7 @@ public class Zoologico implements Serializable {
 		StringBuilder cadena = new StringBuilder();
 
 		for (int i = 0; i < lista.size(); i++) {
-			cadena.append(lista.get(i).toString() + "\n");
+			cadena.append("\n" + lista.get(i).toString() + "\n");
 		}
 
 		return cadena.toString();
