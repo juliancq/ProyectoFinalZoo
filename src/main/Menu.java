@@ -102,6 +102,7 @@ public class Menu {
 				System.out.println(zoo.toString());
 				break;
 			case 3:
+				
 				String ingresarHabitat = (JOptionPane.showInputDialog("\n¿En qué Hábitat desea ingresar?\n"));
 				while(!ComprobarTipo.isAlfabetico(ingresarHabitat))
 				{
@@ -113,8 +114,10 @@ public class Menu {
 				{
 					menuSector(entrar);
 				}
+				
 				break;
 			case 4:
+				
 				String modificacionHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea modificar?\n"));
 				while(!ComprobarTipo.isAlfabetico(modificacionHabitat))
 				{
@@ -122,16 +125,24 @@ public class Menu {
 				}
 
 				Habitat modificar = zoo.buscarHabitatPorNombre(modificacionHabitat);
-				modificarHabitat(modificar);
+				if(modificar!=null)
+				{
+					modificarHabitat(modificar);
+				}
+				
 				break;
 			case 5:
+				
 				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea eliminar?\n"));
 				while(!ComprobarTipo.isAlfabetico(eliminarHabitat))
 				{
 					eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea eliminar?\n"));
 				}
-
-				zoo.eliminarHabitatPorNombre(eliminarHabitat);
+				if(zoo.buscarHabitatPorNombre(eliminarHabitat)!=null)
+				{
+					zoo.eliminarHabitatPorNombre(eliminarHabitat);
+				}
+				
 				break;
 			case 6:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
@@ -182,6 +193,7 @@ public class Menu {
 				}
 				break;
 			case 4:
+				
 				String modificacionSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea modificar?\n"));
 				while(!ComprobarTipo.isAlfabetico(modificacionSector))
 				{
@@ -189,15 +201,24 @@ public class Menu {
 				}
 
 				Sector modificar = hab.buscarSectorPorNombre(modificacionSector);
-				modificarSector(modificar);
+				if(modificar!=null)
+				{
+					modificarSector(modificar);
+				}
+				
 				break;
 			case 5:
+				
 				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Sector desea eliminar?\n"));
 				while(!ComprobarTipo.isAlfabetico(eliminarHabitat))
 				{
 					eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Sector desea eliminar?\n"));
 				}
-				hab.eliminarSectorPorNombre(eliminarHabitat);
+				if(hab.buscarSectorPorNombre(eliminarHabitat)!=null)
+				{
+					hab.eliminarSectorPorNombre(eliminarHabitat);
+				}
+				
 				break;
 			case 6:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
@@ -235,6 +256,7 @@ public class Menu {
 				System.out.println(sec.toString());
 				break;
 			case 3:
+				
 				String respuestaSector = (JOptionPane
 						.showInputDialog("\n¿A qué planilla desea ingresar? Ingrese nombre del animal\n"));
 				while(!ComprobarTipo.isAlfabetico(respuestaSector))
@@ -247,16 +269,23 @@ public class Menu {
 				{
 					planillaAnimal(entrar);
 				}
+				
 				break;
 			case 4:
+				
 				String nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
 				while(!ComprobarTipo.isAlfabetico(nombre))
 				{
 					nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
 				}
-				sec.borrarAnimalPorNombre(nombre);
+				if(sec.buscarAnimalPorNombre(nombre)!=null)
+				{
+					sec.borrarAnimalPorNombre(nombre);
+				}
+				
 				break;
 			case 5:
+				
 				String nuevoStock = JOptionPane.showInputDialog("Ingrese la cantidad de entrada");
 				while(!ComprobarTipo.isNumero(nuevoStock))
 				{
@@ -264,6 +293,7 @@ public class Menu {
 				}
 				double nnuevoStock = Double.parseDouble(nuevoStock);
 				sec.reponerStock(nnuevoStock);
+				
 				break;
 			case 6:
 				try {
