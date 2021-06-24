@@ -363,25 +363,80 @@ public class Menu {
 	private void cargarAnimal(Sector sec, int opcion)
 	{
 		String nombre = JOptionPane.showInputDialog("Ingrese nombre");
-		double peso = Double.parseDouble(JOptionPane.showInputDialog("Ingrese peso"));
+		while(!ComprobarTipo.isAlfabetico(nombre))
+		{
+			nombre = JOptionPane.showInputDialog("Ingrese nombre");
+		}
+		
+		double peso;
+		String Speso = JOptionPane.showInputDialog("Ingrese peso");
+		while(!ComprobarTipo.isNumero(Speso))
+		{
+			Speso = JOptionPane.showInputDialog("Ingrese peso");
+		}
+		peso = Double.parseDouble(Speso);
+		
 		String raza = JOptionPane.showInputDialog("Ingrese raza");
+		while(!ComprobarTipo.isAlfabetico(raza))
+		{
+			raza = JOptionPane.showInputDialog("Ingrese raza");
+		}
+		
 		String especie = JOptionPane.showInputDialog("Ingrese especie");
+		while(!ComprobarTipo.isAlfabetico(especie))
+		{
+			especie = JOptionPane.showInputDialog("Ingrese especie");
+		}
+		
 		String estadoSalud = "Activo";
+		
 		String sexo = JOptionPane.showInputDialog("Ingrese sexo");
-		double alimentacionDiaria = Double
-				.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de alimento diaria que consume"));
-		int dia = Integer.parseInt(JOptionPane.showInputDialog("Ingrese de nacimiento"));
-		int mes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese mes de nacimiento"));
-		int ano = Integer.parseInt(JOptionPane.showInputDialog("Ingrese ano de nacimiento"));
-		Calendar calendario = new GregorianCalendar(ano,mes,dia);
+		while(!ComprobarTipo.isAlfabetico(sexo))
+		{
+			sexo = JOptionPane.showInputDialog("Ingrese sexo");
+		}
+		
+		Double alimentacionDiaria;
+		String SalimentacionDiaria = JOptionPane.showInputDialog("Ingrese la cantidad de alimento diaria que consume");
+		while(!ComprobarTipo.isNumero(SalimentacionDiaria))
+		{
+			SalimentacionDiaria = JOptionPane.showInputDialog("Ingrese la cantidad de alimento diaria que consume");
+		}
+		alimentacionDiaria = Double.parseDouble(SalimentacionDiaria);
+		
+		String dia = JOptionPane.showInputDialog("Ingrese el día");
+		while(!ComprobarTipo.isNumero(dia))
+		{
+			dia = JOptionPane.showInputDialog("Ingrese el día");
+		}
+		
+		String mes = JOptionPane.showInputDialog("Ingrese el mes en número");
+		while(!ComprobarTipo.isNumero(mes))
+		{
+			mes = JOptionPane.showInputDialog("Ingrese el mes en número");
+		}
+		
+		
+		String ano = JOptionPane.showInputDialog("Ingrese el ano en número");
+		while(!ComprobarTipo.isNumero(ano))
+		{
+			ano = JOptionPane.showInputDialog("Ingrese el ano en número");
+		}
+		Calendar calendario = new GregorianCalendar(Integer.parseInt(ano),Integer.parseInt(mes),Integer.parseInt(dia));
 		Date fecha = new Date();
 		calendario.setTime(fecha);
 
 		switch (opcion) {
 		case 1:
 			Volador vol = new Volador(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fecha);
-			vol.setTipoAlimentacion(
-					JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)"));
+			
+			String aux = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
+			
+			while(!ComprobarTipo.isAlfabetico(aux))
+			{
+				aux = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
+			}
+			vol.setTipoAlimentacion(aux);
 			try {
 				sec.agregarAnimal(vol);
 			} catch (Exception e) {
@@ -392,13 +447,13 @@ public class Menu {
 		case 2:
 			Acuatico acua = new Acuatico(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fecha);
 			
-			String aux = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
+			String aux1 = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
 			
-			while(!ComprobarTipo.isAlfabetico(aux))
+			while(!ComprobarTipo.isAlfabetico(aux1))
 			{
-				aux = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
+				aux1 = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
 			}
-			acua.setTipoAlimentacion(aux);
+			acua.setTipoAlimentacion(aux1);
 			try {
 				sec.agregarAnimal(acua);
 			} catch (Exception e) {
