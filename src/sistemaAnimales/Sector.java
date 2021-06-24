@@ -111,21 +111,25 @@ public class Sector<T extends Animal> implements Serializable {
 	 */
 	public void agregarAnimal(T nuevo) throws Exception {
 
-		if (nuevo instanceof Animal) {
+        if (nuevo instanceof Animal) {
 
 
-				if (contarAnimales() < capacidad) {
+                if (contarAnimales() < capacidad) {
 
-					((Animal) nuevo).setID(getContadorId());
-					animales.add(nuevo);
-					setContadorID(getContadorId() + 1);
-				} else {
+                    ((Animal) nuevo).setID(getContadorId());
+                    animales.add(nuevo);
+                    setContadorID(getContadorId() + 1);
+                } else {
 
-					throw new Exception("Habitat lleno");
-				}
-		
-		}
-	}
+                    throw new Exception("Habitat lleno");
+                }
+
+        }
+        else {
+
+            throw new Exception("Especie no apta para este sector");
+        }
+    }
 
 	/**
 	 * Busca un animal por id, si lo halla lo elimina, sino retorna null;
@@ -142,7 +146,24 @@ public class Sector<T extends Animal> implements Serializable {
 			animales.remove(aux);
 		}
 	}
+	
+	
+	public void borrarAnimalPorNombre(String nombre) {
+		
+		Iterator it = animales.iterator();
+		
+		while(it.hasNext()) {
+			
+			if(((Animal)it.next()).getNombre().equals(nombre))
+			{
+				animales.remove(it.next());
+			}
+		}
 
+	}
+	
+	
+	
 	/**
 	 * Retorna la cantidad de animales
 	 * 

@@ -32,6 +32,6 @@ public class Administrativo extends Empleado
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nClase: Administrativo\nPuesto: " + "\nPuesto: " + getPuesto() + "\n-------------------------";
+		return super.toString() + "\nClase: Administrativo\nPuesto: " + getPuesto() + "\n-------------------------";
 	}
 }

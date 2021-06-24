@@ -65,6 +65,10 @@ public class Animal implements Serializable {
 		historiaClinica = new LibretaMedica();
 	}
 
+	public LibretaMedica getHistoriaClinica() {
+		return historiaClinica;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -104,7 +108,23 @@ public class Animal implements Serializable {
 	public double getAlimentacionDiaria() {
 		return alimentacionDiaria;
 	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+	
+	public void setRaza(String raza) {
+		this.raza = raza;
+	}
+	
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	
 	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}

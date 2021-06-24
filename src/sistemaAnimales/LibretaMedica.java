@@ -35,7 +35,7 @@ public class LibretaMedica implements Serializable {
 		ultimaFechaDeRevision = fechaHoy();
 	}
 
-	public Date fechaHoy() {
+	private Date fechaHoy() {
 		Calendar calendario = new GregorianCalendar();
 		Date fecha = new Date();
 		calendario.setTime(fecha);
@@ -57,7 +57,7 @@ public class LibretaMedica implements Serializable {
 
 	@Override
 	public String toString() {
-		return "LibretaMedica [getUltimaFechaDeRevision()=" + getUltimaFechaDeRevision() + ", acumularRevisiones()="
+		return "LibretaMedica [Ultima Fecha de Revisión:" + getUltimaFechaDeRevision() + ", Revisiones acumuladas: "
 				+ acumularRevisiones() + "]";
 	}
 }

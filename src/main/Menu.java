@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.JOptionPane;
 
+import comprobacionTipos.ComprobarTipo;
 import manejoArchivos.PersistenciaZoo;
 import sistemaAnimales.Acuatico;
 import sistemaAnimales.Animal;
@@ -98,7 +99,7 @@ public class Menu {
 
 		while (respuesta != 4) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Salir"));
+					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar sector\n5-Salir"));
 
 			switch (respuesta) {
 			case 1:
@@ -114,6 +115,9 @@ public class Menu {
 				menuAnimales(entrar);
 				break;
 			case 4:
+				
+				break;
+			case 5:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
@@ -128,7 +132,7 @@ public class Menu {
 
 		while (respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Habitat: " + sec.getNombreSector()
-					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Salir"));
+					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Salir"));
 
 			switch (respuesta) {
 			case 1:
@@ -140,9 +144,13 @@ public class Menu {
 			case 3:
 				String respuestaSector = (JOptionPane
 						.showInputDialog("\n¿A qué planilla desea ingresar? Ingrese nombre del animal\n"));
-
+				
 				break;
 			case 4:
+				String nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
+				sec.borrarAnimalPorNombre(nombre);
+				break;
+			case 5:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
@@ -158,9 +166,33 @@ public class Menu {
 		
 		while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4)
 		{
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog(ani));
+			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver"));
 			
-			
+			switch(respuesta)
+			{
+			case 1:
+				String diagnostico = JOptionPane.showInputDialog("Ingrese su diagnóstico para el animal");
+				ani.getHistoriaClinica().actualizar(diagnostico);
+				break;
+			case 2:
+				System.out.println(ani.getHistoriaClinica().toString());
+				break;
+			case 3:
+				System.out.println(ani.getHistoriaClinica().ultimaRevisión());
+				break;
+			case 4:
+				System.out.println(ani.toString());
+				break;
+			case 5:
+				//hacer nada
+				break;
+			case 6:
+				
+				break;
+			default:
+				mostrarMensajeError();
+				break;
+			}
 		}
 	}
 
@@ -300,7 +332,7 @@ public class Menu {
 		int dia = Integer.parseInt(JOptionPane.showInputDialog("Ingrese de nacimiento"));
 		int mes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese mes de nacimiento"));
 		int ano = Integer.parseInt(JOptionPane.showInputDialog("Ingrese ano de nacimiento"));
-		Calendar calendario = new GregorianCalendar();
+		Calendar calendario = new GregorianCalendar(ano,mes,dia);
 		Date fecha = new Date();
 		calendario.setTime(fecha);
 
@@ -359,94 +391,327 @@ public class Menu {
 			break;
 		}
 	}
-
-	private void mostrarMensajeError() {
-		JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, vuelva a intentarlo");
-	}
-
-	private void ingresarEmpleado() {
-		int tipoEmpleado = -1;
-
-		while (tipoEmpleado != 1 && tipoEmpleado != 2 && tipoEmpleado != 3 && tipoEmpleado != 4 && tipoEmpleado != 5
-				&& tipoEmpleado != 6 && tipoEmpleado != 7 && tipoEmpleado != 8) {
-			tipoEmpleado = Integer.parseInt(JOptionPane.showInputDialog(
-					"Ingrese un tipo\n1-Adiestrador\n2-Administrativo\n3-Cuidador\n4-Guia\n5-Limpieza\n6-Seguridad\n7-Servicio al cliente\n8-Veterinario"));
-
-			switch (tipoEmpleado) {
+	
+	
+	private void modificarAnimal(Animal ani)
+	{
+		int respuesta = -1;
+		
+		while(respuesta!=1 && respuesta!=2 &&respuesta!=3 && respuesta!=4 && respuesta!=5 && respuesta!=6 && respuesta!=6 && respuesta!=7 && respuesta!=8)
+		{
+			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n\n1-Nombre\n2-Peso\n3-Raza\n4-Especie\n5-Sexo\n6-Alimentacion diaria\n7-Fecha de Nacimiento\n8-Volver"));
+			
+			switch(respuesta)
+			{
 			case 1:
-				Adiestrador aux1 = (Adiestrador) ingresarDatos();
-				aux1.setEspecilidad(JOptionPane.showInputDialog("Ingrese especialidad de tipo de animales"));
-				aux1.setHorasTrabajadasMensuales(
-						Integer.parseInt(JOptionPane.showInputDialog("Ingrese horas mensuales trabajadas")));
-				administracion.addEmpleado(aux1);
+				String nombreNuevo = JOptionPane.showInputDialog("Ingrese el nombre");
+				ani.setNombre(nombreNuevo);
+				break;
 			case 2:
-				Administrativo aux2 = (Administrativo) ingresarDatos();
-				aux2.setPuesto(JOptionPane.showInputDialog("Ingrese puesto"));
-				administracion.addEmpleado(aux2);
+				double peso = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el peso"));
+				ani.setPeso(peso);
+				break;
 			case 3:
-				Cuidador aux3 = (Cuidador) ingresarDatos();
-				aux3.setSector(Integer.parseInt(JOptionPane.showInputDialog("Ingrese sector")));
-				administracion.addEmpleado(aux3);
+				String raza = JOptionPane.showInputDialog("Ingrese la raza");
+				ani.setRaza(raza);
 			case 4:
-				Guia aux4 = (Guia) ingresarDatos();
-				char opcion;
-				do {
-					aux4.addIdiomas(JOptionPane.showInputDialog("Ingrese un idioma"));
-					opcion = JOptionPane.showInputDialog("Desea agregar otro idioma?(S/N)").charAt(0);
-				} while (opcion == 's');
-				administracion.addEmpleado(aux4);
+				String especie = JOptionPane.showInputDialog("Ingrese especie");
+				
+				break;
 			case 5:
-				Limpieza aux5 = (Limpieza) ingresarDatos();
-				aux5.setHorasTrabajadasMensuales(
-						Integer.parseInt(JOptionPane.showInputDialog("Ingrese horas mensuales trabajadas")));
-				administracion.addEmpleado(aux5);
+				String sexo = JOptionPane.showInputDialog("Ingrese el sexo");
+				ani.setSexo(sexo);
+				break;
 			case 6:
-				Seguridad aux6 = (Seguridad) ingresarDatos();
-				aux6.setSector(Integer.parseInt(JOptionPane.showInputDialog("Ingresar sector")));
-				administracion.addEmpleado(aux6);
+				double alimentacion = Double.parseDouble(JOptionPane.showInputDialog("Ingrese alimentación diaria"));
+				ani.setAlimentacionDiaria(alimentacion);
+				break;
 			case 7:
-				ServicioAlCliente aux7 = (ServicioAlCliente) ingresarDatos();
-				aux7.setArea(JOptionPane.showInputDialog("Ingrese area de trabajo"));
-				administracion.addEmpleado(aux7);
+				int dia = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el día"));
+				int mes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el mes en número"));
+				int ano = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ano en número"));
+				
+				Calendar calendario = new GregorianCalendar(ano,mes,dia);
+				Date fecha = new Date();
+				calendario.setTime(fecha);
 			case 8:
-				Veterinario aux8 = (Veterinario) ingresarDatos();
-				aux8.setMatricula(JOptionPane.showInputDialog("Ingrese matricula"));
-				administracion.addEmpleado(aux8);
+				//hacer nada
+				break;
 			default:
 				mostrarMensajeError();
 				break;
 			}
 		}
 	}
-
-	private Empleado ingresarDatos() {
-		String nombre = JOptionPane.showInputDialog("Ingrese nombre");
-		String apellido = JOptionPane.showInputDialog("Ingrese apellido");
-		int dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese dni"));
-		int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese edad"));
-		String mail = JOptionPane.showInputDialog("Ingrese mail");
-		String telefono = JOptionPane.showInputDialog("Ingrese telefono");
-		String direccion = JOptionPane.showInputDialog("Ingrese direccion");
-		String horario = JOptionPane.showInputDialog("Ingrese horario");
-		char genero = JOptionPane.showInputDialog("Ingrese genero").charAt(0);
-		String cuil = JOptionPane.showInputDialog("Ingrese cuil");
-
-		Empleado aux = new Empleado(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil);
-
-		return aux;
-	}
-
-	public void menuAdministracion() {
+	
+	
+	public void modificarSector(Sector sec)
+	{
 		int respuesta = -1;
-
-		while (respuesta != 4) {
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Administracion\n\nIngrese una opcionn\n1-Agregar un Empleado\n2-Listar Empleados\n3-Eliminar un Empleado\n4-Salir"));
-
-			switch (respuesta) {
+		
+		while(respuesta==-1)
+		{
+			respuesta = Integer.parseInt("Ingrese el campo que quiere modificar\n1-Nombre\n2-Capacidad\n3-Volver");
+			
+			switch(respuesta)
+			{
 			case 1:
-				ingresarEmpleado();
+				String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
+				sec.setNombreSector(nombre);
+				break;
+			case 2:
+				int capacidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad"));
+				sec.setCapacidad(capacidad);
+				break;
+			case 3:
+				//hacer nada
+				break;
+			default:
+				mostrarMensajeError();
+				break;
 			}
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	private void mostrarMensajeError() {
+		JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, vuelva a intentarlo");
+	}
+	
+	
+	public void menuAdministracion()
+    {
+        int respuesta = -1;
+
+        while(respuesta != 4)
+        {
+            respuesta = Integer.parseInt(JOptionPane.showInputDialog(
+                    "Administracion\n\nIngrese una opcionn\n1-Agregar un Empleado\n2-Listar Empleados\n3-Eliminar un Empleado\n4-Salir"));
+
+            switch (respuesta)
+            {
+            case 1:
+                ingresarEmpleado();
+                break;
+            case 2:
+                System.out.println(administracion.listado());
+                break;
+            }
+        }
+    }
+	
+	private void ingresarEmpleado()
+	{
+		int tipoEmpleado = -1;
+		
+		while(tipoEmpleado!=1&&tipoEmpleado!=2&&tipoEmpleado!=3&&tipoEmpleado!=4&&tipoEmpleado!=5&&tipoEmpleado!=6&&tipoEmpleado!=7&&tipoEmpleado!=8)
+		{
+			tipoEmpleado = Integer.parseInt(JOptionPane.showInputDialog(
+					"Ingrese un tipo\n1-Adiestrador\n2-Administrativo\n3-Cuidador\n4-Guia\n5-Limpieza\n6-Seguridad\n7-Servicio al cliente\n8-Veterinario"));
+			
+			switch(tipoEmpleado)
+			{
+				case 1:
+					Adiestrador aux1 = (Adiestrador) ingresarDatos(1);
+					String especialidad = JOptionPane.showInputDialog("Ingrese especialidad de tipo de animales");
+					while(!ComprobarTipo.isAlfabetico(especialidad))
+					{
+						especialidad = JOptionPane.showInputDialog("Error (Recuerde ingresar solo caracteres alfabeticos)\nIngrese especialidad de tipo de animales");
+					}
+					aux1.setEspecilidad(especialidad);
+					String horass = JOptionPane.showInputDialog("Ingrese horas mensuales trabajadas");
+					while(!ComprobarTipo.isNumero(horass))
+					{
+						horass = JOptionPane.showInputDialog("Error (Recuerde ingresar numeros)\nIngrese horas mensuales trabajadas");
+					}
+					int horas = Integer.parseInt(horass);
+					aux1.setHorasTrabajadasMensuales(horas);
+					administracion.addEmpleado(aux1);
+					break;
+				case 2:
+					Administrativo aux2 = (Administrativo) ingresarDatos(2);
+					String puesto = JOptionPane.showInputDialog("Ingrese puesto");
+					while(!ComprobarTipo.isAlfabetico(puesto))
+					{
+						puesto = JOptionPane.showInputDialog("Error (Recuerde ingresar solo caracteres alfabeticos)\nIngrese puesto");
+					}
+					aux2.setPuesto(puesto);
+					administracion.addEmpleado(aux2);
+					break;
+				case 3:
+					Cuidador aux3 = (Cuidador) ingresarDatos(3);
+					String sectorr = JOptionPane.showInputDialog("Ingrese sector");
+					while(!ComprobarTipo.isNumero(sectorr))
+					{
+						sectorr = JOptionPane.showInputDialog("Error (Recuerde ingresar numeros)\nIngrese sector");
+					}
+					int sector = Integer.parseInt(sectorr);
+					aux3.setSector(sector);
+					administracion.addEmpleado(aux3);
+					break;
+				case 4:
+					Guia aux4 = (Guia) ingresarDatos(4);
+					char opcion;
+					do
+					{
+						String idioma = JOptionPane.showInputDialog("Ingrese un idioma");
+						while(!ComprobarTipo.isAlfabetico(idioma))
+						{
+							idioma = JOptionPane.showInputDialog("Error (Recuerde ingresar solo caracteres alfabeticos)\nIngrese un idioma");
+						}
+						aux4.addIdiomas(idioma);
+						opcion = JOptionPane.showInputDialog("Desea agregar otro idioma?(S/N)").charAt(0);
+					}while(opcion == 's');
+					administracion.addEmpleado(aux4);
+					break;
+				case 5:
+					Limpieza aux5 = (Limpieza) ingresarDatos(5);
+					String horasss = JOptionPane.showInputDialog("Ingrese horas mensuales trabajadas");
+					while(!ComprobarTipo.isNumero(horasss))
+					{
+						horasss = JOptionPane.showInputDialog("Error (Recuerde ingresar solo numeros)\nIngrese horas mensuales trabajadas");
+					}
+					int hhoras = Integer.parseInt(horasss);
+					aux5.setHorasTrabajadasMensuales(hhoras);
+					administracion.addEmpleado(aux5);
+					break;
+				case 6:
+					Seguridad aux6 = (Seguridad) ingresarDatos(6);
+					String sectorrr = JOptionPane.showInputDialog("Ingresar sector");
+					while(!ComprobarTipo.isNumero(sectorrr))
+					{
+						sectorr = JOptionPane.showInputDialog("Error (Recuerde ingresar solo numeros)\nIngresar sector");
+					}
+					int ssector = Integer.parseInt(sectorrr);
+					aux6.setSector(ssector);
+					administracion.addEmpleado(aux6);
+					break;
+				case 7:
+					ServicioAlCliente aux7 = (ServicioAlCliente) ingresarDatos(7);
+					String area = JOptionPane.showInputDialog("Ingrese area de trabajo");
+					while(!ComprobarTipo.isAlfabetico(area))
+					{
+						area = JOptionPane.showInputDialog("Error (Recuerde ingresar solo caracteres alfabeticos)\nIngrese area de trabajo");
+					}
+					aux7.setArea(area);
+					administracion.addEmpleado(aux7);
+					break;
+				case 8:
+					Veterinario aux8 = (Veterinario) ingresarDatos(8);
+					String mat = JOptionPane.showInputDialog("Ingrese matricula");
+					while(!ComprobarTipo.isNumero(mat))
+					{
+						mat = JOptionPane.showInputDialog("Error (Recuerde ingresar solo numeros)\nIngrese matricula");
+					}
+					aux8.setMatricula(mat);
+					administracion.addEmpleado(aux8);
+					break;
+				default:
+					mostrarMensajeError();
+					break;
+			}
+		}
+	}
+	
+	private Empleado ingresarDatos(int opcion)
+	{
+		String nombre = JOptionPane.showInputDialog("Ingrese nombre");
+		while(!ComprobarTipo.isAlfabetico(nombre))
+		{
+			nombre = JOptionPane.showInputDialog("Error (recuerde agregar solo caracteres alfabeticos)\nIngrese nombre");
+		}
+		String apellido = JOptionPane.showInputDialog("Ingrese apellido");
+		while(!ComprobarTipo.isAlfabetico(apellido))
+		{
+			apellido = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfabeticos)\nIngrese apellido");
+		}
+		String dnii = JOptionPane.showInputDialog("Ingrese dni");
+		while(!ComprobarTipo.isNumero(dnii))
+		{
+			dnii = JOptionPane.showInputDialog("Error (Recuerde agregar solo numeros)\nIngrese dni");
+		}
+		int dni = Integer.parseInt(dnii);
+		String edadd = JOptionPane.showInputDialog("Ingrese edad");
+		while(!ComprobarTipo.isNumero(edadd))
+		{
+			edadd = JOptionPane.showInputDialog("Error (Rcuerde agregar solo numeros)\nIngrese edad");
+		}
+		int edad = Integer.parseInt(edadd);
+		String mail = JOptionPane.showInputDialog("Ingrese mail");
+		while(!ComprobarTipo.isMail(mail))
+		{
+			mail = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos con el @ incluido)\nIngrese mail");
+		}
+		String telefono = JOptionPane.showInputDialog("Ingrese telefono");
+		while(!ComprobarTipo.isNumero(telefono))
+		{
+			telefono = JOptionPane.showInputDialog("Error (Rcuerde agregar solo numeros)\nIngrese telefono");
+		}
+		String direccion = JOptionPane.showInputDialog("Ingrese direccion");
+		while(!ComprobarTipo.isAlfaNum(direccion))
+		{
+			direccion = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos)\nIngrese direccion");
+		}
+		String horario = JOptionPane.showInputDialog("Ingrese horario");
+		while(!ComprobarTipo.isAlfabetico(horario))
+		{
+			horario = JOptionPane.showInputDialog("Error (Recuerde que el sector son caracteres alfabeticos: Mañana, Tarde, Noche)\nIngrese horario");
+		}
+		char genero = JOptionPane.showInputDialog("Ingrese genero").charAt(0);
+		while(!ComprobarTipo.isAlfabetico(Character.toString(genero)))
+		{
+			genero = JOptionPane.showInputDialog("Error (Recuerde agregar solo un caracter alfabetico)\nIngrese genero").charAt(0);
+		}
+		String cuil = JOptionPane.showInputDialog("Ingrese cuil");
+		while(!ComprobarTipo.isNumero(cuil))
+		{
+			cuil = JOptionPane.showInputDialog("Error (Recuerde agregar solo numeros)\nIngrese cuil");
+		}
+		
+		switch(opcion)
+		{
+		case 1:
+			Adiestrador aux1 = new Adiestrador(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null, 0);
+			return aux1;
+		case 2:
+			Administrativo aux2 = new Administrativo(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
+			return aux2;
+		case 3:
+			Cuidador aux3 = new Cuidador(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
+			return aux3;
+		case 4:
+			Guia aux4 = new Guia(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil);
+			return aux4;
+		case 5:
+			Limpieza aux5 = new Limpieza(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
+			return aux5;
+		case 6:
+			Seguridad aux6 = new Seguridad(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
+			return aux6;
+		case 7:
+			ServicioAlCliente aux7 = new ServicioAlCliente(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
+			return aux7;
+		case 8:
+			Veterinario aux8 = new Veterinario(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
+			return aux8;
+		default:
+			return null;
 		}
 	}
 }
