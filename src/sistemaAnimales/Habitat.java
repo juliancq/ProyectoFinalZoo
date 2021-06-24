@@ -143,4 +143,15 @@ public class Habitat implements Serializable {
 		
 		return retorno;
 	}
+	
+	public void eliminarSectorPorNombre(String nombre)
+	{
+		for(int i=0;i<sectores.size();i++)
+		{
+			if(sectores.get(i).getNombreSector().equals(nombre))
+			{
+				sectores.remove(i);
+			}
+		}
+	}
 }

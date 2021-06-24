@@ -268,6 +268,23 @@ public class Sector<T extends Animal> implements Serializable {
 
 		setUltimaFechaMantenimiento(new Date());
 	}
+	
+	public Animal buscarAnimalPorNombre(String nombre)
+	{
+		Iterator it = animales.iterator();
+		
+		Animal retorno = null;
+		
+		while(it.hasNext())
+		{
+			if(((Animal)it.next()).getNombre().equals(nombre))
+			{
+				retorno = ((Animal)it.next());
+			}
+		}
+		
+		return retorno;
+	}
 
 	@Override
 	public String toString() {

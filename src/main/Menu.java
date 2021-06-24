@@ -69,7 +69,7 @@ public class Menu {
 
 		while (respuesta != 4) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Salir"));
+					"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir"));
 
 			switch (respuesta) {
 			case 1:
@@ -79,12 +79,23 @@ public class Menu {
 				System.out.println(zoo.toString());
 				break;
 			case 3:
-				String respuestaHabitat = (JOptionPane.showInputDialog("\n¿En qué Hábitat desea ingresar?\n"));
+				String ingresarHabitat = (JOptionPane.showInputDialog("\n¿En qué Hábitat desea ingresar?\n"));
 
-				Habitat entrar = zoo.buscarHabitatPorNombre(respuestaHabitat);
+				Habitat entrar = zoo.buscarHabitatPorNombre(ingresarHabitat);
 				menuSector(entrar);
 				break;
 			case 4:
+				String modificacionHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea modificar?\n"));
+
+				Habitat modificar = zoo.buscarHabitatPorNombre(modificacionHabitat);
+				modificarHabitat(modificar);
+				break;
+			case 5:
+				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea eliminar?\n"));
+
+				zoo.eliminarHabitatPorNombre(eliminarHabitat);
+				break;
+			case 6:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
@@ -97,9 +108,9 @@ public class Menu {
 	public void menuSector(Habitat hab) {
 		int respuesta = -1;
 
-		while (respuesta != 4) {
+		while (respuesta != 5) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar sector\n5-Salir"));
+					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar Sector\n5-Eliminar Sector\n6-Salir"));
 
 			switch (respuesta) {
 			case 1:
@@ -109,15 +120,23 @@ public class Menu {
 				System.out.println(hab.toString());
 				break;
 			case 3:
-				String respuestaSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea ingresar?\n"));
+				String ingresarSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea ingresar?\n"));
 
-				Sector entrar = hab.buscarSectorPorNombre(respuestaSector);
+				Sector entrar = hab.buscarSectorPorNombre(ingresarSector);
 				menuAnimales(entrar);
 				break;
 			case 4:
-				
+				String modificacionSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea modificar?\n"));
+
+				Sector modificar = hab.buscarSectorPorNombre(modificacionSector);
+				modificarSector(modificar);
 				break;
-			case 5:
+			case 7:
+				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Sector desea eliminar?\n"));
+
+				hab.eliminarSectorPorNombre(eliminarHabitat);
+				break;
+			case 6:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
@@ -130,9 +149,9 @@ public class Menu {
 	public void menuAnimales(Sector sec) {
 		int respuesta = -1;
 
-		while (respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4) {
+		while (respuesta != 5) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Habitat: " + sec.getNombreSector()
-					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Salir"));
+					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Reponer stock Alimento\n6-Alimentar\n7-Hacer mantenimiento\n8-Salir"));
 
 			switch (respuesta) {
 			case 1:
@@ -145,12 +164,33 @@ public class Menu {
 				String respuestaSector = (JOptionPane
 						.showInputDialog("\n¿A qué planilla desea ingresar? Ingrese nombre del animal\n"));
 				
+				Animal entrar = sec.buscarAnimalPorNombre(respuestaSector);
+				planillaAnimal(entrar);
 				break;
 			case 4:
 				String nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
 				sec.borrarAnimalPorNombre(nombre);
 				break;
 			case 5:
+				double nuevoStock = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de entrada"));
+				
+				sec.reponerStock(nuevoStock);
+				break;
+			case 6:
+				try {
+					sec.alimentar();
+					JOptionPane.showMessageDialog(null, "Animales alimentados exitosamente !");
+				} catch (Exception e) {
+					
+					JOptionPane.showMessageDialog(null, "Stock insuficiente");
+					//e.printStackTrace();
+				}
+				break;
+			case 7:
+				sec.hacerMantenimiento();
+				JOptionPane.showMessageDialog(null, "Limpieza de Sector actualizada !");
+				break;
+			case 8:
 				JOptionPane.showMessageDialog(null, "Saliendo..");
 				break;
 			default:
@@ -475,14 +515,33 @@ public class Menu {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void modificarHabitat(Habitat hab)
+	{
+		int respuesta = -1;
+		
+		while(respuesta!=1)
+		{
+			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Temperatura\n2-Tipo\n3-Volver"));
+			
+			switch(respuesta)
+			{
+			case 1:
+				double temperatura = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la temperatura"));
+				hab.setTemperatura(temperatura);
+				break;
+			case 2:
+				String tipo = JOptionPane.showInputDialog("Ingrese el tipo");
+				hab.setTipo(tipo);
+				break;
+			case 3:
+				//volver
+				break;
+			default:
+				mostrarMensajeError();
+				break;
+			}
+		}
+	}
 	
 	
 	

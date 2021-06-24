@@ -23,7 +23,7 @@ public class Empleado implements Serializable
 	private String horario;
 	private char genero;
 	private String cuil;
-	private boolean alta = false;
+	private boolean alta = true;
 	private int calificacion[] = new int[100];
 	private int posActual = 0;
 	private double sueldo = 0;

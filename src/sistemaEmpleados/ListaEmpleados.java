@@ -44,7 +44,10 @@ public class ListaEmpleados implements Serializable
 		
 		for(int i=0;i<lista.size();i++)
 		{
-			builder.append(lista.get(i));
+			if(lista.get(i).getAlta()==true)
+            {
+                builder.append(lista.get(i));
+            }
 		}
 		return builder.toString();
 	}
