@@ -138,8 +138,6 @@ public class Sector<T extends Animal> implements Serializable {
 	 */
 	public void borrarAnimal(int idAnimal) {
 
-		Iterator it = animales.iterator();
-
 		Animal aux = getAnimal(idAnimal);
 
 		if (aux != null) {
@@ -147,19 +145,18 @@ public class Sector<T extends Animal> implements Serializable {
 		}
 	}
 	
-	
+	/**
+	 * Busca un animal por nombre, si lo halla lo elimina, sino retorna null;
+	 * 
+	 * @param nombre
+	 */
 	public void borrarAnimalPorNombre(String nombre) {
 		
-		Iterator it = animales.iterator();
+		Animal aux = buscarAnimalPorNombre(nombre);
 		
-		while(it.hasNext()) {
+		if(aux != null) {
 			
-			Animal aux = ((Animal)it.next());
-			
-			if(aux.getNombre().equals(nombre))
-			{
-				animales.remove(aux);
-			}
+			animales.remove(aux);
 		}
 
 	}
@@ -271,6 +268,13 @@ public class Sector<T extends Animal> implements Serializable {
 		setUltimaFechaMantenimiento(new Date());
 	}
 	
+	/**
+	 * Busca un animal y lo retorna
+	 * 
+	 * 
+	 * @param nombre
+	 * @return el animal
+	 */
 	public Animal buscarAnimalPorNombre(String nombre)
 	{
 		Iterator it = animales.iterator();
