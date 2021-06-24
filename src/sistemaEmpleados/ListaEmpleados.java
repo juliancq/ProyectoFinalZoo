@@ -5,10 +5,6 @@ import java.util.ArrayList;
 
 public class ListaEmpleados implements Serializable 
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private ArrayList <Empleado> lista;
 	/**
 	 * Lista a los empleados de la lista
@@ -45,36 +41,12 @@ public class ListaEmpleados implements Serializable
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getAlta()==true)
-            {
-                builder.append(lista.get(i));
-            }
-		}
-		return builder.toString();
-	}
-	
-	/**
-	 * Agrega un en StringBuilder una clase especifica de empleados
-	 * que ingresa por parametro, y luego devuelve ese String.
-	 * @param <T>
-	 * @param Clase
-	 * @return
-	 */
-	public <T extends Empleado>String listarPorClase(T Clase)
-	{
-		StringBuilder builder = new StringBuilder();
-		
-		for(int i=0;i<lista.size();i++)
-		{
-			if(lista.get(i).getClass()==Clase.getClass())
 			{
-				builder.append(lista.get(i).toString());
+				builder.append(lista.get(i));
 			}
 		}
-		
 		return builder.toString();
-		
 	}
-	
 	
 	/**
 	 * Cuenta la cantidad de empleados de la lista
@@ -84,130 +56,123 @@ public class ListaEmpleados implements Serializable
 	{
 		return lista.size();
 	}
-
-	/**
-	 * Cuenta la cantidad de empleados de la lista dependiendo
-	 * de la clase de empleado que ingresa por parametro y lo retorna.
-	 * @param <T>
-	 * @param Clase
-	 * @return
-	 */
-	public <T extends Empleado>int contarPorClase(T Clase)
-	{
-		int contador = 0;
-		
-		for(int i=0;i<lista.size();i++)
-		{
-			if(lista.get(i).getClass()==Clase.getClass())
-			{
-				contador++;
-			}
-		}
-		return contador;
-	}
 	
 	/**
 	 * Da de alta a un empleado segun el nro de legajo
 	 * @param legajo
 	 */
-	public void darDeAlta(int legajo)
+	public boolean darDeAlta(int legajo)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.get(i).darAlta();
+				return true;
 			}
 		}
+		return false;
 	}
 	/**
 	 * Da de baja a un empleado segun el nro de legajo
 	 * @param legajo
 	 */
-	public void darDeBaja(int legajo)
+	public boolean darDeBaja(int legajo)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.get(i).darBaja();
+				return true;
 			}
 		}
+		return false;
 	}
 	/**
 	 * Modifica el horario de un empleado
 	 * @param legajo
 	 * @param horario
 	 */
-	public void modificarHorario(int legajo, String horario)
+	public boolean modificarHorario(int legajo, String horario)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.get(i).setHorario(horario);
+				return true;
 			}
 		}
+		return false;
 	}
 	/**
 	 * Modifica el sueldo de un empleado
 	 * @param legajo
 	 * @param sueldo
 	 */
-	public void modificarSueldo(int legajo, double sueldo)
+	public boolean modificarSueldo(int legajo, double sueldo)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.get(i).setSueldo(sueldo);
+				return true;
 			}
 		}
+		return false;
 	}
 	/**
 	 * Modifica la direccion de un empleado
 	 * @param legajo
 	 * @param direccion
 	 */
-	public void modificarDireccion(int legajo, String direccion)
+	public boolean modificarDireccion(int legajo, String direccion)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.get(i).setDireccion(direccion);
+				return true;
 			}
 		}
+		return false;
 	}
 	/**
 	 * Modifica el telefono de un empleado
 	 * @param legajo
 	 * @param telefono
 	 */
-	public void modificarTelefono(int legajo, String telefono)
+	public boolean modificarTelefono(int legajo, String telefono)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.get(i).setTelefono(telefono);
+				return true;
 			}
 		}
+		return false;
 	}
 
 	/**
 	 * Elimina un empleado segun nro de legajo
 	 * @param legajo
 	 */
-	public void eliminarPorLegajo(int legajo)
+	public boolean eliminarPorLegajo(int legajo)
 	{
 		for(int i=0;i<lista.size();i++)
 		{
 			if(lista.get(i).getLegajo() == legajo)
 			{
 				lista.remove(i);
+				return true;
 			}
 		}
+		return false;
 	}
 
 	/**

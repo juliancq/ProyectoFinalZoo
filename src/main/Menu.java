@@ -543,37 +543,330 @@ public class Menu {
 		}
 	}
 	
-	
-	
-	
-	
-	
-
 	private void mostrarMensajeError() {
 		JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, vuelva a intentarlo");
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void menuAdministracion()
-    {
-        int respuesta = -1;
-
-        while(respuesta != 4)
-        {
-            respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Administracion\n\nIngrese una opcionn\n1-Agregar un Empleado\n2-Listar Empleados\n3-Eliminar un Empleado\n4-Salir"));
-
-            switch (respuesta)
-            {
-            case 1:
-                ingresarEmpleado();
-                break;
-            case 2:
-                System.out.println(administracion.listado());
-                break;
-            }
-        }
-    }
+	{
+		int respuesta = -1;
+		
+		while(respuesta != 6)
+		{
+			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
+					"Administracion\n\nIngrese una opcionn\n1-Agregar un Empleado\n2-Listar Empleados\n3-Eliminar un Empleado\n4-Modificar datos\n5-Contar empleados\n6-Salir"));
+			
+			switch (respuesta)
+			{
+			case 1:
+				ingresarEmpleado();
+				break;
+			case 2:
+				System.out.println(administracion.listado());
+				break;
+			case 3:
+				int legajo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+				Boolean el = administracion.eliminarPorLegajo(legajo);
+				if(el)
+				{
+					System.out.println("Legajo n° " + legajo + " eliminado con exito!");
+				}
+				else
+				{
+					System.out.println("No se encontro el legajo n° " + legajo + " en el sistema...");
+				}
+				break;
+			case 4:
+				int rta = -1;
+				
+				while(rta != 7)
+				{
+					rta = Integer.parseInt(JOptionPane.showInputDialog("1-Modificar horario\n2-Modificar sueldo\n3-Modificar direccion\n4-Modificar telefono\n5-Dar de alta\n6-Dar de baja\n7-Salir"));
+					switch(rta)
+					{
+						case 1: 
+							modificarHorario();
+							break;
+						case 2:
+							modificarSueldo();
+							break;
+						case 3:
+							modificarDireccion();
+							break;
+						case 4:
+							modificarTelefono();
+							break;
+						case 5:
+							int legajo1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+							Empleado emp = administracion.buscarPorLegajo(legajo1);
+							if(emp != null)
+							{
+								System.out.println(emp.toString());
+								boolean b = administracion.darDeAlta(legajo1);
+								if(b)
+								{
+									System.out.println("Modificacion exitosa!");
+								}
+								else
+								{
+									System.out.println("Error en la modificacion");
+								}
+							}
+							else
+							{
+								System.out.println("No hay empleados con ese legajo...");
+							}
+							break;
+						case 6:
+							int legajo2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+							Empleado empp = administracion.buscarPorLegajo(legajo2);
+							if(empp != null)
+							{
+								System.out.println(empp.toString());
+								boolean b = administracion.darDeAlta(legajo2);
+								if(b)
+								{
+									System.out.println("Modificacion exitosa!");
+								}
+								else
+								{
+									System.out.println("Error en la modificacion");
+								}
+							}
+							else
+							{
+								System.out.println("No hay empleados con ese legajo...");
+							}
+							break;
+						case 7:
+							break;
+						default:
+							JOptionPane.showMessageDialog(null, "Opción invalida");
+							break;
+					}
+				}
+		
+			case 5:
+				System.out.println("Cantidad de empleados: " + administracion.contar());
+				break;
+			case 6:
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opción invalida");
+				break;
+			}
+		}
+	}
+	
+	public void modificarHorario()
+	{
+		int legajo1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+		Empleado emp = administracion.buscarPorLegajo(legajo1);
+		if(emp!=null)
+		{
+			System.out.println(emp.toString());
+			String horario = JOptionPane.showInputDialog("Ingrese nuevo horario");
+			while(!ComprobarTipo.isAlfabetico(horario))
+			{
+				horario = JOptionPane.showInputDialog("Error (Recuerde que el sector son caracteres alfabeticos: Mañana, Tarde, Noche)\nIngrese horario");
+			}
+			boolean mh = administracion.modificarHorario(legajo1, horario);
+			if(mh)
+			{
+				System.out.println("Modificacion exitosa!");
+			}
+			else
+			{
+				System.out.println("Error en la modificacion");
+			}
+		}
+		else
+		{
+			System.out.println("No hay empleados con ese legajo...");
+		}
+	}
+	
+	public void modificarSueldo()
+	{
+		int legajo1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+		Empleado emp = administracion.buscarPorLegajo(legajo1);
+		if(emp!=null)
+		{
+			System.out.println(emp.toString());
+			String sueldo = JOptionPane.showInputDialog("Ingrese nuevo sueldo");
+			while(!ComprobarTipo.isNumero(sueldo))
+			{
+				sueldo = JOptionPane.showInputDialog("Error (Recuerde ingresar numeros)\nIngrese nuevo sueldo");
+			}
+			double sueldoo = Double.parseDouble(sueldo);
+			boolean ms = administracion.modificarSueldo(legajo1, sueldoo);
+			if(ms)
+			{
+				System.out.println("Modificacion exitosa!");
+			}
+			else
+			{
+				System.out.println("Error en la modificacion");
+			}
+		}
+		else
+		{
+			System.out.println("No hay empleados con ese legajo...");
+		}
+	}
+	
+	public void modificarDireccion()
+	{
+		int legajo1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+		Empleado emp = administracion.buscarPorLegajo(legajo1);
+		if(emp!=null)
+		{
+			System.out.println(emp.toString());
+			String direccion = JOptionPane.showInputDialog("Ingrese nueva direccion");
+			while(!ComprobarTipo.isAlfaNum(direccion))
+			{
+				direccion = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos)\nIngrese direccion");
+			}
+			boolean md = administracion.modificarDireccion(legajo1, direccion);
+			if(md)
+			{
+				System.out.println("Modificacion exitosa!");
+			}
+			else
+			{
+				System.out.println("Error en la modificacion");
+			}
+		}
+		else
+		{
+			System.out.println("No hay empleados con ese legajo...");
+		}
+	}
+	
+	public void modificarTelefono()
+	{
+		int legajo1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+		Empleado emp = administracion.buscarPorLegajo(legajo1);
+		if(emp!=null)
+		{
+			System.out.println(emp.toString());
+			String telefono = JOptionPane.showInputDialog("Ingrese nuevo telefono");
+			while(!ComprobarTipo.isNumero(telefono))
+			{
+				telefono = JOptionPane.showInputDialog("Error (Recuerde ingresar numeros)\nIngrese nuevo telefono");
+			}
+			boolean mt = administracion.modificarTelefono(legajo1, telefono);
+			if(mt)
+			{
+				System.out.println("Modificacion exitosa!");
+			}
+			else
+			{
+				System.out.println("Error en la modificacion");
+			}
+		}
+		else
+		{
+			System.out.println("No hay empleados con ese legajo...");
+		}
+	}
+	
+	private Empleado ingresarDatos(int opcion)
+	{
+		String nombre = JOptionPane.showInputDialog("Ingrese nombre");
+		while(!ComprobarTipo.isAlfabetico(nombre))
+		{
+			nombre = JOptionPane.showInputDialog("Error (recuerde agregar solo caracteres alfabeticos)\nIngrese nombre");
+		}
+		String apellido = JOptionPane.showInputDialog("Ingrese apellido");
+		while(!ComprobarTipo.isAlfabetico(apellido))
+		{
+			apellido = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfabeticos)\nIngrese apellido");
+		}
+		String dnii = JOptionPane.showInputDialog("Ingrese dni");
+		while(!ComprobarTipo.isNumero(dnii))
+		{
+			dnii = JOptionPane.showInputDialog("Error (Recuerde agregar solo numeros)\nIngrese dni");
+		}
+		int dni = Integer.parseInt(dnii);
+		String edadd = JOptionPane.showInputDialog("Ingrese edad");
+		while(!ComprobarTipo.isNumero(edadd))
+		{
+			edadd = JOptionPane.showInputDialog("Error (Rcuerde agregar solo numeros)\nIngrese edad");
+		}
+		int edad = Integer.parseInt(edadd);
+		String mail = JOptionPane.showInputDialog("Ingrese mail");
+		while(!ComprobarTipo.isMail(mail))
+		{
+			mail = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos con el @ incluido)\nIngrese mail");
+		}
+		String telefono = JOptionPane.showInputDialog("Ingrese telefono");
+		while(!ComprobarTipo.isNumero(telefono))
+		{
+			telefono = JOptionPane.showInputDialog("Error (Rcuerde agregar solo numeros)\nIngrese telefono");
+		}
+		String direccion = JOptionPane.showInputDialog("Ingrese direccion");
+		while(!ComprobarTipo.isAlfaNum(direccion))
+		{
+			direccion = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos)\nIngrese direccion");
+		}
+		String horario = JOptionPane.showInputDialog("Ingrese horario");
+		while(!ComprobarTipo.isAlfabetico(horario))
+		{
+			horario = JOptionPane.showInputDialog("Error (Recuerde que el sector son caracteres alfabeticos: Mañana, Tarde, Noche)\nIngrese horario");
+		}
+		char genero = JOptionPane.showInputDialog("Ingrese genero").charAt(0);
+		while(genero!='M'&&genero!='F'&&genero!='m'&&genero!='f')
+		{
+			genero = JOptionPane.showInputDialog("Error (Recuerde agregar solo un caracter alfabetico)\nIngrese genero").charAt(0);
+		}
+		String cuil = JOptionPane.showInputDialog("Ingrese cuil");
+		while(!ComprobarTipo.isNumero(cuil))
+		{
+			cuil = JOptionPane.showInputDialog("Error (Recuerde agregar solo numeros)\nIngrese cuil");
+		}
+		
+		switch(opcion)
+		{
+		case 1:
+			Adiestrador aux1 = new Adiestrador(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null, 0);
+			return aux1;
+		case 2:
+			Administrativo aux2 = new Administrativo(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
+			return aux2;
+		case 3:
+			Cuidador aux3 = new Cuidador(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
+			return aux3;
+		case 4:
+			Guia aux4 = new Guia(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil);
+			return aux4;
+		case 5:
+			Limpieza aux5 = new Limpieza(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
+			return aux5;
+		case 6:
+			Seguridad aux6 = new Seguridad(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
+			return aux6;
+		case 7:
+			ServicioAlCliente aux7 = new ServicioAlCliente(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
+			return aux7;
+		case 8:
+			Veterinario aux8 = new Veterinario(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
+			return aux8;
+		default:
+			return null;
+		}
+	}
 	
 	private void ingresarEmpleado()
 	{
@@ -685,92 +978,6 @@ public class Menu {
 					mostrarMensajeError();
 					break;
 			}
-		}
-	}
-	
-	private Empleado ingresarDatos(int opcion)
-	{
-		String nombre = JOptionPane.showInputDialog("Ingrese nombre");
-		while(!ComprobarTipo.isAlfabetico(nombre))
-		{
-			nombre = JOptionPane.showInputDialog("Error (recuerde agregar solo caracteres alfabeticos)\nIngrese nombre");
-		}
-		String apellido = JOptionPane.showInputDialog("Ingrese apellido");
-		while(!ComprobarTipo.isAlfabetico(apellido))
-		{
-			apellido = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfabeticos)\nIngrese apellido");
-		}
-		String dnii = JOptionPane.showInputDialog("Ingrese dni");
-		while(!ComprobarTipo.isNumero(dnii))
-		{
-			dnii = JOptionPane.showInputDialog("Error (Recuerde agregar solo numeros)\nIngrese dni");
-		}
-		int dni = Integer.parseInt(dnii);
-		String edadd = JOptionPane.showInputDialog("Ingrese edad");
-		while(!ComprobarTipo.isNumero(edadd))
-		{
-			edadd = JOptionPane.showInputDialog("Error (Rcuerde agregar solo numeros)\nIngrese edad");
-		}
-		int edad = Integer.parseInt(edadd);
-		String mail = JOptionPane.showInputDialog("Ingrese mail");
-		while(!ComprobarTipo.isMail(mail))
-		{
-			mail = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos con el @ incluido)\nIngrese mail");
-		}
-		String telefono = JOptionPane.showInputDialog("Ingrese telefono");
-		while(!ComprobarTipo.isNumero(telefono))
-		{
-			telefono = JOptionPane.showInputDialog("Error (Rcuerde agregar solo numeros)\nIngrese telefono");
-		}
-		String direccion = JOptionPane.showInputDialog("Ingrese direccion");
-		while(!ComprobarTipo.isAlfaNum(direccion))
-		{
-			direccion = JOptionPane.showInputDialog("Error (Recuerde agregar solo caracteres alfanumericos)\nIngrese direccion");
-		}
-		String horario = JOptionPane.showInputDialog("Ingrese horario");
-		while(!ComprobarTipo.isAlfabetico(horario))
-		{
-			horario = JOptionPane.showInputDialog("Error (Recuerde que el sector son caracteres alfabeticos: Mañana, Tarde, Noche)\nIngrese horario");
-		}
-		char genero = JOptionPane.showInputDialog("Ingrese genero").charAt(0);
-		while(!ComprobarTipo.isAlfabetico(Character.toString(genero)))
-		{
-			genero = JOptionPane.showInputDialog("Error (Recuerde agregar solo un caracter alfabetico)\nIngrese genero").charAt(0);
-		}
-		String cuil = JOptionPane.showInputDialog("Ingrese cuil");
-		while(!ComprobarTipo.isNumero(cuil))
-		{
-			cuil = JOptionPane.showInputDialog("Error (Recuerde agregar solo numeros)\nIngrese cuil");
-		}
-		
-		switch(opcion)
-		{
-		case 1:
-			Adiestrador aux1 = new Adiestrador(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null, 0);
-			return aux1;
-		case 2:
-			Administrativo aux2 = new Administrativo(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
-			return aux2;
-		case 3:
-			Cuidador aux3 = new Cuidador(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
-			return aux3;
-		case 4:
-			Guia aux4 = new Guia(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil);
-			return aux4;
-		case 5:
-			Limpieza aux5 = new Limpieza(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
-			return aux5;
-		case 6:
-			Seguridad aux6 = new Seguridad(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, 0);
-			return aux6;
-		case 7:
-			ServicioAlCliente aux7 = new ServicioAlCliente(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
-			return aux7;
-		case 8:
-			Veterinario aux8 = new Veterinario(nombre, apellido, dni, edad, mail, telefono, direccion, horario, genero, cuil, null);
-			return aux8;
-		default:
-			return null;
 		}
 	}
 }
