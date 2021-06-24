@@ -121,6 +121,10 @@ public class Animal implements Serializable {
 		this.raza = raza;
 	}
 	
+	public void setEspecie(String especie) {
+		this.especie = especie;
+	}
+	
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}

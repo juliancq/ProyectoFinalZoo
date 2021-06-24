@@ -67,7 +67,7 @@ public class Menu {
 	public void menuHabitat() {
 		int respuesta = -1;
 
-		while (respuesta != 4) {
+		while (respuesta != 6) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
 					"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir"));
 
@@ -131,7 +131,7 @@ public class Menu {
 				Sector modificar = hab.buscarSectorPorNombre(modificacionSector);
 				modificarSector(modificar);
 				break;
-			case 7:
+			case 5:
 				String eliminarHabitat = (JOptionPane.showInputDialog("\n¿Qué Sector desea eliminar?\n"));
 
 				hab.eliminarSectorPorNombre(eliminarHabitat);
@@ -149,7 +149,7 @@ public class Menu {
 	public void menuAnimales(Sector sec) {
 		int respuesta = -1;
 
-		while (respuesta != 5) {
+		while (respuesta != 8) {
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Habitat: " + sec.getNombreSector()
 					+ "\n\nIngrese una opción\n1-Agregar Animal\n2-Listar Animales\n3-Ingresar a planilla del Animal\n4-Eliminar Animal\n5-Reponer stock Alimento\n6-Alimentar\n7-Hacer mantenimiento\n8-Salir"));
 
@@ -206,7 +206,8 @@ public class Menu {
 		
 		while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4)
 		{
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver"));
+			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
+					"Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver"));
 			
 			switch(respuesta)
 			{
@@ -224,10 +225,10 @@ public class Menu {
 				System.out.println(ani.toString());
 				break;
 			case 5:
-				//hacer nada
+				modificarAnimal(ani);
 				break;
 			case 6:
-				
+				//hacer nada
 				break;
 			default:
 				mostrarMensajeError();
@@ -390,8 +391,14 @@ public class Menu {
 			break;
 		case 2:
 			Acuatico acua = new Acuatico(nombre, peso, raza, especie, estadoSalud, sexo, alimentacionDiaria, fecha);
-			acua.setTipoAlimentacion(
-					JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)"));
+			
+			String aux = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
+			
+			while(!ComprobarTipo.isAlfabetico(aux))
+			{
+				aux = JOptionPane.showInputDialog("Ingrese tipo de alimentacion(Carnivoro/Omnivoro/Herbivoro)");
+			}
+			acua.setTipoAlimentacion(aux);
 			try {
 				sec.agregarAnimal(acua);
 			} catch (Exception e) {
@@ -439,39 +446,91 @@ public class Menu {
 		
 		while(respuesta!=1 && respuesta!=2 &&respuesta!=3 && respuesta!=4 && respuesta!=5 && respuesta!=6 && respuesta!=6 && respuesta!=7 && respuesta!=8)
 		{
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n\n1-Nombre\n2-Peso\n3-Raza\n4-Especie\n5-Sexo\n6-Alimentacion diaria\n7-Fecha de Nacimiento\n8-Volver"));
+			String aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n\n1-Nombre\n2-Peso\n3-Raza\n4-Especie\n5-Sexo\n6-Alimentacion diaria\n7-Fecha de Nacimiento\n8-Volver");
+			
+			while(!ComprobarTipo.isNumero(aux))
+			{
+				aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n\n1-Nombre\n2-Peso\n3-Raza\n4-Especie\n5-Sexo\n6-Alimentacion diaria\n7-Fecha de Nacimiento\n8-Volver");
+			}
+			
+			respuesta = Integer.parseInt(aux);
 			
 			switch(respuesta)
 			{
 			case 1:
 				String nombreNuevo = JOptionPane.showInputDialog("Ingrese el nombre");
+				
+				while(!ComprobarTipo.isAlfabetico(nombreNuevo))
+				{
+					nombreNuevo = JOptionPane.showInputDialog("Ingrese el nombre");
+				}
 				ani.setNombre(nombreNuevo);
 				break;
 			case 2:
-				double peso = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el peso"));
-				ani.setPeso(peso);
+				String peso = JOptionPane.showInputDialog("Ingrese el peso");
+				
+				while(!ComprobarTipo.isNumero(peso))
+				{
+					peso = JOptionPane.showInputDialog("Ingrese el peso");
+				}
+				ani.setPeso(Double.parseDouble(peso));
 				break;
 			case 3:
 				String raza = JOptionPane.showInputDialog("Ingrese la raza");
+				
+				while(!ComprobarTipo.isAlfabetico(raza))
+				{
+					raza = JOptionPane.showInputDialog("Ingrese la raza");
+				}
 				ani.setRaza(raza);
 			case 4:
 				String especie = JOptionPane.showInputDialog("Ingrese especie");
 				
+				while(!ComprobarTipo.isAlfabetico(especie))
+				{
+					especie = JOptionPane.showInputDialog("Ingrese especie");
+				}
+				ani.setEspecie(especie);
 				break;
 			case 5:
 				String sexo = JOptionPane.showInputDialog("Ingrese el sexo");
+				
+				while(!ComprobarTipo.isAlfabetico(sexo))
+				{
+					sexo = JOptionPane.showInputDialog("Ingrese el sexo");
+				}
 				ani.setSexo(sexo);
 				break;
 			case 6:
-				double alimentacion = Double.parseDouble(JOptionPane.showInputDialog("Ingrese alimentación diaria"));
-				ani.setAlimentacionDiaria(alimentacion);
+				String alimentacion =JOptionPane.showInputDialog("Ingrese alimentación diaria");
+				
+				while(!ComprobarTipo.isNumero(alimentacion))
+				{
+					alimentacion = JOptionPane.showInputDialog("Ingrese alimentación diaria");
+				}
+				ani.setAlimentacionDiaria(Double.parseDouble(alimentacion));
 				break;
 			case 7:
-				int dia = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el día"));
-				int mes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el mes en número"));
-				int ano = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ano en número"));
+				String dia = JOptionPane.showInputDialog("Ingrese el día");
+				while(!ComprobarTipo.isNumero(dia))
+				{
+					dia = JOptionPane.showInputDialog("Ingrese el día");
+				}
 				
-				Calendar calendario = new GregorianCalendar(ano,mes,dia);
+				String mes = JOptionPane.showInputDialog("Ingrese el mes en número");
+				while(!ComprobarTipo.isNumero(mes))
+				{
+					mes = JOptionPane.showInputDialog("Ingrese el mes en número");
+				}
+				
+				
+				String ano = JOptionPane.showInputDialog("Ingrese el ano en número");
+				while(!ComprobarTipo.isNumero(ano))
+				{
+					ano = JOptionPane.showInputDialog("Ingrese el ano en número");
+				}
+				
+				Calendar calendario = new GregorianCalendar(Integer.parseInt(ano),Integer.parseInt(mes),Integer.parseInt(dia));
 				Date fecha = new Date();
 				calendario.setTime(fecha);
 			case 8:
@@ -491,17 +550,33 @@ public class Menu {
 		
 		while(respuesta==-1)
 		{
-			respuesta = Integer.parseInt("Ingrese el campo que quiere modificar\n1-Nombre\n2-Capacidad\n3-Volver");
+			String aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Nombre\n2-Capacidad\n3-Volver");
+			
+			while(!ComprobarTipo.isNumero(aux))
+			{
+				aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Nombre\n2-Capacidad\n3-Volver");
+			}
+			respuesta = Integer.parseInt(aux);
 			
 			switch(respuesta)
 			{
 			case 1:
 				String nombre = JOptionPane.showInputDialog("Ingrese el nombre");
+				
+				while(!ComprobarTipo.isAlfabetico(nombre))
+				{
+					nombre = JOptionPane.showInputDialog("Ingrese el nombre");
+				}
 				sec.setNombreSector(nombre);
 				break;
 			case 2:
-				int capacidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad"));
-				sec.setCapacidad(capacidad);
+				String capacidad = JOptionPane.showInputDialog("Ingrese la capacidad");
+				
+				while(!ComprobarTipo.isNumero(capacidad))
+				{
+					capacidad = JOptionPane.showInputDialog("Ingrese la capacidad");
+				}
+				sec.setCapacidad(Integer.parseInt(capacidad));
 				break;
 			case 3:
 				//hacer nada
@@ -521,16 +596,32 @@ public class Menu {
 		
 		while(respuesta!=1)
 		{
-			respuesta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Temperatura\n2-Tipo\n3-Volver"));
+			String aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Temperatura\n2-Tipo\n3-Volver");
+			
+			while(!ComprobarTipo.isNumero(aux))
+			{
+				aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Temperatura\n2-Tipo\n3-Volver");
+			}
+			respuesta = Integer.parseInt(aux);
 			
 			switch(respuesta)
 			{
 			case 1:
-				double temperatura = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la temperatura"));
-				hab.setTemperatura(temperatura);
+				String temperatura = JOptionPane.showInputDialog("Ingrese la temperatura");
+				
+				while(!ComprobarTipo.isNumero(temperatura))
+				{
+					temperatura = JOptionPane.showInputDialog("Ingrese la temperatura");
+				}
+				hab.setTemperatura(Double.parseDouble(temperatura));
 				break;
 			case 2:
 				String tipo = JOptionPane.showInputDialog("Ingrese el tipo");
+				
+				while(!ComprobarTipo.isAlfabetico(tipo))
+				{
+					tipo = JOptionPane.showInputDialog("Ingrese el tipo");
+				}
 				hab.setTipo(tipo);
 				break;
 			case 3:
@@ -562,10 +653,10 @@ public class Menu {
 	{
 		int respuesta = -1;
 		
-		while(respuesta != 6)
+		while(respuesta != 7)
 		{
 			respuesta = Integer.parseInt(JOptionPane.showInputDialog(
-					"Administracion\n\nIngrese una opcionn\n1-Agregar un Empleado\n2-Listar Empleados\n3-Eliminar un Empleado\n4-Modificar datos\n5-Contar empleados\n6-Salir"));
+					"Administracion\n\nIngrese una opcionn\n1-Agregar un Empleado\n2-Listar Empleados\n3-Eliminar un Empleado\n4-Modificar datos\n5-Contar empleados\n6-Empleado del mes\n7-Salir"));
 			
 			switch (respuesta)
 			{
@@ -590,9 +681,9 @@ public class Menu {
 			case 4:
 				int rta = -1;
 				
-				while(rta != 7)
+				while(rta != 8)
 				{
-					rta = Integer.parseInt(JOptionPane.showInputDialog("1-Modificar horario\n2-Modificar sueldo\n3-Modificar direccion\n4-Modificar telefono\n5-Dar de alta\n6-Dar de baja\n7-Salir"));
+					rta = Integer.parseInt(JOptionPane.showInputDialog("1-Modificar horario\n2-Modificar sueldo\n3-Modificar direccion\n4-Modificar telefono\n5-Dar de alta\n6-Dar de baja\n7-Agregar calificacion\n8-Salir"));
 					switch(rta)
 					{
 						case 1: 
@@ -650,6 +741,23 @@ public class Menu {
 							}
 							break;
 						case 7:
+							int legajo3 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
+							Empleado emppp = administracion.buscarPorLegajo(legajo3);
+							if(emppp != null)
+							{
+								int calificacion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese calificacion del 1 al 10"));
+								while(calificacion<0&&calificacion>10)
+								{
+									calificacion = Integer.parseInt(JOptionPane.showInputDialog("Error (fuera de rango)\nIngrese calificacion del 1 al 10"));
+								}
+								administracion.calificarAtencion(legajo3, calificacion);
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "No existe el empleado...");
+							}
+							break;
+						case 8:
 							break;
 						default:
 							JOptionPane.showMessageDialog(null, "Opción invalida");
@@ -661,6 +769,10 @@ public class Menu {
 				System.out.println("Cantidad de empleados: " + administracion.contar());
 				break;
 			case 6:
+				Empleado e = administracion.buscarPorLegajo(administracion.buscarEmpleadoDelMes());
+				System.out.println("Empleado del mes:\n " + e.toString() + "Calificacion total: " + administracion.calcularCalificacionTotal(administracion.buscarEmpleadoDelMes()));
+				break;
+			case 7:
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Opción invalida");

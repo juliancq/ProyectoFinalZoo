@@ -154,9 +154,11 @@ public class Sector<T extends Animal> implements Serializable {
 		
 		while(it.hasNext()) {
 			
-			if(((Animal)it.next()).getNombre().equals(nombre))
+			Animal aux = ((Animal)it.next());
+			
+			if(aux.getNombre().equals(nombre))
 			{
-				animales.remove(it.next());
+				animales.remove(aux);
 			}
 		}
 
@@ -277,9 +279,11 @@ public class Sector<T extends Animal> implements Serializable {
 		
 		while(it.hasNext())
 		{
-			if(((Animal)it.next()).getNombre().equals(nombre))
+			Animal aux = ((Animal)it.next());
+			
+			if(aux.getNombre().equals(nombre))
 			{
-				retorno = ((Animal)it.next());
+				retorno = aux;
 			}
 		}
 		

@@ -3,8 +3,12 @@ package sistemaEmpleados;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListaEmpleados implements Serializable 
+public class ListaEmpleados implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList <Empleado> lista;
 	/**
 	 * Lista a los empleados de la lista
