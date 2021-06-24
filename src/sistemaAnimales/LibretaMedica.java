@@ -29,12 +29,22 @@ public class LibretaMedica implements Serializable {
 	public Date getUltimaFechaDeRevision() {
 		return ultimaFechaDeRevision;
 	}
-
+	
+	/**
+	 * Permite la actualización de la historia clinica
+	 * 
+	 * @param recibe un diagnóstico del animal
+	 */
 	public void actualizar(String descripciónEstado) {
 		historiaClinica.add(descripciónEstado);
 		ultimaFechaDeRevision = fechaHoy();
 	}
 
+	/**
+	 * Setea la fecha para el momento en el que se está invocando
+	 * 
+	 * 
+	 */
 	private Date fechaHoy() {
 		Calendar calendario = new GregorianCalendar();
 		Date fecha = new Date();
@@ -42,11 +52,21 @@ public class LibretaMedica implements Serializable {
 
 		return fecha;
 	}
-
+	
+	/**
+	 * @return Busca en el arreglo que contiene las revisiones(historiaClinica) y retorna la ultima posición
+	 * 
+	 * 
+	 */
 	public String ultimaRevisión() {
 		return historiaClinica.get(historiaClinica.size());
 	}
 
+	/**
+	 * Acumula en un solo string todas las revisiones y las retorna
+	 * 
+	 * 
+	 */
 	private String acumularRevisiones() {
 		StringBuilder cadena = new StringBuilder();
 		for (int i = 0; i < historiaClinica.size(); i++) {

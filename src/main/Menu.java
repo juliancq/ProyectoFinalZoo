@@ -35,11 +35,16 @@ public class Menu {
 	private ListaEmpleados administracion;
 
 	public Menu() {
-		PersistenciaZoo per = new PersistenciaZoo();
+
 		zoo = PersistenciaZoo.leerZoo();
 		administracion = zoo.getListaEmpleados();
 	}
-
+	
+	/**
+	 * Menu principal del Zoológico
+	 * 
+	 * 
+	 */
 	public void menuZoologico() {
 		int respuesta = -1;
 
@@ -70,7 +75,12 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Menu que da las opciones para controlar la clase Habitat contenida en Zoologico
+	 * 
+	 * 
+	 */
 	public void menuHabitat() {
 		int respuesta = -1;
 
@@ -99,7 +109,10 @@ public class Menu {
 				}
 
 				Habitat entrar = zoo.buscarHabitatPorNombre(ingresarHabitat);
-				menuSector(entrar);
+				if(entrar!=null)
+				{
+					menuSector(entrar);
+				}
 				break;
 			case 4:
 				String modificacionHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea modificar?\n"));
@@ -129,7 +142,12 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Menú que da las opciones para el manejo de sectores, la cual está contenida en Hábitat
+	 * 
+	 * @param Habitat que contiene los sectores
+	 */
 	public void menuSector(Habitat hab) {
 		int respuesta = -1;
 
@@ -158,7 +176,10 @@ public class Menu {
 				}
 
 				Sector entrar = hab.buscarSectorPorNombre(ingresarSector);
-				menuAnimales(entrar);
+				if(entrar!=null)
+				{
+					menuAnimales(entrar);
+				}
 				break;
 			case 4:
 				String modificacionSector = (JOptionPane.showInputDialog("\n¿En qué Sector desea modificar?\n"));
@@ -187,7 +208,12 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Menu que permite el control de la clase Animal, la cual está contenida en Sector
+	 * 
+	 * @param Sector que contiene los animales
+	 */
 	public void menuAnimales(Sector sec) {
 		int respuesta = -1;
 
@@ -217,7 +243,10 @@ public class Menu {
 							.showInputDialog("\n¿A qué planilla desea ingresar? Ingrese nombre del animal\n"));
 				}
 				Animal entrar = sec.buscarAnimalPorNombre(respuestaSector);
-				planillaAnimal(entrar);
+				if(entrar!=null)
+				{
+					planillaAnimal(entrar);
+				}
 				break;
 			case 4:
 				String nombre = JOptionPane.showInputDialog("Ingrese el nombre del Animal a eliminar");
@@ -260,11 +289,17 @@ public class Menu {
 		}
 	}
 	
+	
+	/**
+	 * Busca un animal por nombre, si lo halla lo elimina, sino retorna null;
+	 * 
+	 * @param Animal que tiene sus propios datos
+	 */
 	public void planillaAnimal(Animal ani)
 	{
 		int respuesta = -1;
 		
-		while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4)
+		while(respuesta!=6)
 		{
 			String out = JOptionPane.showInputDialog(
 					"Planilla: "+ ani.getNombre() +"\nIngrese una opción\n1-Revisión médica\n2-Visualizar historia clínica\n3-Visualizar última revisión\n4-Listar información\n5-Modificar información\n6-Volver");
@@ -306,7 +341,12 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Funcion que permite el ingreso de informacion de un Habitat para su posterior carga
+	 * 
+	 * 
+	 */
 //Método que permite el ingreso de información para hacer una carga de un Hábitat
 	private Habitat ingresarInformacionHabitat() {
 		String tipo = JOptionPane.showInputDialog("Ingrese el tipo de Hábitat(Sabana, Selva, Marino, etc..)");
@@ -370,7 +410,15 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	
+	/**
+	 * Este método es utilizado para el ingreso ingreso específico de que tipo de alimentación tendrán los animales del sector a ingresar en el sistema
+	 * 
+	 * @param Habitat para almacenar el sector creado
+	 * @param nombreSector que trae el nombre para el nuevo sector
+	 * @param capacidad 
+	 */
 	private void ingresarTipoAlimentacion(Habitat hab, String nombreSector, int capacidad) {
 		int opcion = -1;
 
@@ -403,7 +451,12 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Método para la carga de información de un animal
+	 * 
+	 * @param nombre
+	 */
 	public void ingresarInformacionAnimal(Sector sec) {
 		int respuesta = -1;
 		while (respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4) {
@@ -436,6 +489,11 @@ public class Menu {
 
 	}
 
+	/**
+	 * Metodo que permite el ingreso de el tipo de un animal terrestre
+	 * 
+	 * 
+	 */
 	public void cargarAnimalTerrestre(Sector sec) {
 		int opcion = -1;
 
@@ -467,7 +525,12 @@ public class Menu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Permite el ingreso de información general para los animales
+	 * 
+	 * 
+	 */
 	private void cargarAnimal(Sector sec, int opcion)
 	{
 		String nombre = JOptionPane.showInputDialog("Ingrese nombre");
@@ -602,7 +665,11 @@ public class Menu {
 		}
 	}
 	
-	
+	/**
+	 * Método que permite la modificación de la planilla de un animal
+	 * 
+	 * @param Animal a modificar
+	 */
 	private void modificarAnimal(Animal ani)
 	{
 		int respuesta = -1;
@@ -706,7 +773,11 @@ public class Menu {
 		}
 	}
 	
-	
+	/**
+	 * Método que permite la modificación de un sector específico
+	 * 
+	 * @param Sector a modificar
+	 */
 	public void modificarSector(Sector sec)
 	{
 		int respuesta = -1;
@@ -748,11 +819,14 @@ public class Menu {
 				mostrarMensajeError();
 				break;
 			}
-			
 		}
 	}
 	
-	
+	/**
+	 * Método que permite la modificación de un Habitat específico
+	 * 
+	 * @param Habitat a modificar
+	 */
 	public void modificarHabitat(Habitat hab)
 	{
 		int respuesta = -1;
@@ -800,9 +874,6 @@ public class Menu {
 	private void mostrarMensajeError() {
 		JOptionPane.showMessageDialog(null, "Opción inválida. Por favor, vuelva a intentarlo");
 	}
-	
-	
-	
 	
 	
 	
@@ -944,6 +1015,7 @@ public class Menu {
 		}
 	}
 	
+	
 	public void modificarHorario()
 	{
 		int legajo1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el n° de legajo"));
@@ -971,6 +1043,7 @@ public class Menu {
 			System.out.println("No hay empleados con ese legajo...");
 		}
 	}
+	
 	
 	public void modificarSueldo()
 	{

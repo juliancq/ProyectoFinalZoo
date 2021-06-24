@@ -3,6 +3,9 @@ package sistemaAnimales;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Clase padre de todo animal, mantiene amplia informacion acerca del animal Id,
  * nombre, peso, raza, especie, estado, sexo, alimentacion diaria, fecha de
@@ -145,6 +148,36 @@ public class Animal implements Serializable {
 		return "Animal [Nombre:" + getNombre() + ", Peso:" + getPeso() + ", Raza:" + getRaza() + ", Especie:"
 				+ getEspecie() + ", Estado de Salud:" + getEstadoSalud() + ", Sexo:" + getSexo()
 				+ ", Fecha de Nacimiento:" + getFechaDeNacimiento() + "]";
+	}
+	
+	/**
+	 * Pasa la informacion contenida en el animal a JSON
+	 * 
+	 * 
+	 */
+	public JSONObject toJSON()
+	{
+		
+		try {
+			JSONObject jsonObject_animal = new JSONObject();
+			
+			jsonObject_animal.put("ID", getID());
+			jsonObject_animal.put("Nombre", getNombre());
+			jsonObject_animal.put("Peso", getPeso());
+			jsonObject_animal.put("Raza", getRaza());
+			jsonObject_animal.put("Especie", getEspecie());
+			jsonObject_animal.put("Salud", getEstadoSalud());
+			jsonObject_animal.put("Sexo", getSexo());
+			jsonObject_animal.put("Cantidad comida", getAlimentacionDiaria());
+			jsonObject_animal.put("Nacimiento", getFechaDeNacimiento());
+			jsonObject_animal.put("Clase", "Animal");
+			
+			return jsonObject_animal;
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public boolean equals(Animal obj) {

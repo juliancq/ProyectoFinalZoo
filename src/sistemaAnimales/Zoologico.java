@@ -27,14 +27,22 @@ public class Zoologico implements Serializable {
 		administracion = new ListaEmpleados();
 	}
 	
-
+	/**
+	 * Agrega un Habitat a la lista de Hábitat
+	 * 
+	 * 
+	 */
 	public void agregarHabitat(Habitat aux)
 	{
 		aux.setIdContador(lista.size());
 		lista.add(aux);
 	}
 
-	
+	/**
+	 * Menu que da las opciones para controlar la clase Habitat contenida en Zoologico
+	 * 
+	 * 
+	 */
 	public void eliminarHabitatPorNombre(String tipo)
 	{
 		lista.remove(buscarHabitatPorNombre(tipo));
