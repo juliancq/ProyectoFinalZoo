@@ -85,6 +85,7 @@ public class Menu {
 		int respuesta = -1;
 
 		while (respuesta != 6) {
+			
 			String out = JOptionPane.showInputDialog(
 					"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir");
 			while(!ComprobarTipo.isNumero(out))
@@ -92,6 +93,7 @@ public class Menu {
 				out = JOptionPane.showInputDialog(
 						"Zoológico\n\nIngrese una opción\n1-Agregar Hábitat\n2-Listar Hábitats\n3-Ingresar a Hábitat\n4-Modificar\n5-Eliminar Hábitat\n6-Salir");
 			}
+			
 			respuesta = Integer.parseInt(out);
 			
 			switch (respuesta) {
@@ -123,7 +125,6 @@ public class Menu {
 				{
 					modificacionHabitat = (JOptionPane.showInputDialog("\n¿Qué Hábitat desea modificar?\n"));
 				}
-
 				Habitat modificar = zoo.buscarHabitatPorNombre(modificacionHabitat);
 				if(modificar!=null)
 				{
@@ -145,7 +146,7 @@ public class Menu {
 				
 				break;
 			case 6:
-				JOptionPane.showMessageDialog(null, "Saliendo..");
+				//salir
 				break;
 			default:
 				mostrarMensajeError();
@@ -162,7 +163,7 @@ public class Menu {
 	public void menuSector(Habitat hab) {
 		int respuesta = -1;
 
-		while (respuesta != 5) {
+		while (respuesta != 6) {
 			String out = JOptionPane.showInputDialog(
 					"Habitat\n\nIngrese una opción\n1-Agregar Sector\n2-Listar Sectores\n3-Ingresar a Sector\n4-Modificar Sector\n5-Eliminar Sector\n6-Salir");
 			while(!ComprobarTipo.isNumero(out))
@@ -221,7 +222,7 @@ public class Menu {
 				
 				break;
 			case 6:
-				JOptionPane.showMessageDialog(null, "Saliendo..");
+				//volver
 				break;
 			default:
 				mostrarMensajeError();
@@ -310,7 +311,7 @@ public class Menu {
 				JOptionPane.showMessageDialog(null, "Limpieza de Sector actualizada !");
 				break;
 			case 8:
-				JOptionPane.showMessageDialog(null, "Saliendo..");
+				//volver
 				break;
 			default:
 				mostrarMensajeError();
@@ -868,7 +869,7 @@ public class Menu {
 	{
 		int respuesta = -1;
 		
-		while(respuesta!=1)
+		while(respuesta!=3)
 		{
 			String aux = JOptionPane.showInputDialog("Ingrese el campo que quiere modificar\n1-Temperatura\n2-Tipo\n3-Volver");
 			
